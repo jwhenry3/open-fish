@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7133641650946133304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7133641650946133306}
+  - component: {fileID: 7133641650946133307}
+  - component: {fileID: 7133641650946133285}
+  m_Layer: 0
+  m_Name: PluginManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7133641650946133306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133641650946133304}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7133641650946133307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133641650946133304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c4ac553954a8289d75feb9b23ab70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 7133641650946133285}
+  _networkObjectCache: {fileID: 7133641650946133285}
+  PluginList:
+  - {fileID: 6339804716151986287, guid: e466f7ab5e479f0488e8ef8f80126b25, type: 3}
+  - {fileID: 7928195382262924774, guid: bbb8cfc7dc8d6cf44afc4c2b6429d5d1, type: 3}
+  - {fileID: 7736221237995631171, guid: 191412cfd16e7714cb1d592944279c84, type: 3}
+  - {fileID: 8212510177971412154, guid: d052ff7e17fc4a043a8291437b0fb671, type: 3}
+  - {fileID: 4868177878077772520, guid: 43fd8906528c4a54f9bfd22d28cbb928, type: 3}
+  - {fileID: 3775826072558312511, guid: 781b1188dd115f348846b5de9188b89e, type: 3}
+  - {fileID: 5318471789816754186, guid: a09301ed7f7c53442b64927cf4bbbf80, type: 3}
+  - {fileID: 4979861505853958588, guid: 0383304d6f147394fbfd3b70abc59107, type: 3}
+  - {fileID: 9200953045533322854, guid: abebb036826ca1140a44f6bb9cdfad1e, type: 3}
+  - {fileID: 6780475939666403064, guid: c89dcb9ac822e2e4fb07e4f97a4d7f14, type: 3}
+--- !u!114 &7133641650946133285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7133641650946133304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsNested>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 0
+  <PredictedSpawn>k__BackingField: {fileID: 0}
+  _networkBehaviours:
+  - {fileID: 7133641650946133307}
+  <ParentNetworkObject>k__BackingField: {fileID: 0}
+  <ChildNetworkObjects>k__BackingField: []
+  _isNetworked: 1
+  _isGlobal: 1
+  _initializeOrder: 0
+  _defaultDespawnType: 0
+  NetworkObserver: {fileID: 0}
+  <PrefabId>k__BackingField: 1
+  <SpawnableCollectionId>k__BackingField: 0
+  _scenePathHash: 0
+  <SceneId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 11218842253150244038
+  _sceneNetworkObjects:
+  - {fileID: 7133641650946133285}
