@@ -8,6 +8,12 @@ namespace OpenFish.Plugins.PhysicalObject
     {
         public NetworkObject CharacterPrefab;
 
+        public override void OnStartNetwork()
+        {
+            base.OnStartNetwork();
+            base.NetworkManager.RegisterInstance(this);
+        }
+
         public override void OnStartServer()
         {
             base.OnStartServer();
@@ -24,7 +30,7 @@ namespace OpenFish.Plugins.PhysicalObject
         {
             if (!IsServer || !asServer) return;
             if (!entity.RequiredSystems.Contains("physical-object")) return;
-           entity.AddSystem<PhysicalObjectSystem>(CharacterPrefab);
+            entity.AddSystem<PhysicalObjectSystem>(CharacterPrefab);
         }
     }
 }
