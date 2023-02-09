@@ -5,7 +5,9 @@ namespace OpenFish.Plugins.Entities
 {
     public class EntitySystem : NetworkBehaviour
     {
+        
         public Entity Entity;
+        
 
         public virtual string GetSystemName()
         {
@@ -18,7 +20,8 @@ namespace OpenFish.Plugins.Entities
 
         protected virtual void OnDestroy()
         {
-            Entity.OnReady -= OnEntityReady;
+            if (Entity != null)
+                Entity.OnReady -= OnEntityReady;
         }
     }
 }

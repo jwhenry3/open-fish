@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9200953045533322855}
   - component: {fileID: 9200953045533322854}
   - component: {fileID: 9200953045533322849}
+  - component: {fileID: -234524361694637997}
   m_Layer: 0
   m_Name: PetPlugin
   m_TagString: Untagged
@@ -79,7 +80,7 @@ MonoBehaviour:
   NetworkObserver: {fileID: 0}
   <PrefabId>k__BackingField: 13
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 584410112
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 13986515218844552153
   _sceneNetworkObjects:
@@ -93,3 +94,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &-234524361694637997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200953045533322848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ef910500d144cbb04408dc9e116c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 9200953045533322849}
+  _networkObjectCache: {fileID: 0}
+  Prefab: {fileID: 4507483277014946634, guid: 928be4f27f97c074c8c2461262cacef7, type: 3}

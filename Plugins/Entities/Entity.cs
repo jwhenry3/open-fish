@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using FishNet;
 using FishNet.Object;
@@ -57,13 +58,23 @@ namespace OpenFish.Plugins.Entities
         public T AddSystem<T>(NetworkObject prefab) where T : EntitySystem
         {
             if (!IsServer) return null;
+            if (prefab == null) return null;
             var system = typeof(T).AssemblyQualifiedName;
             if (String.IsNullOrEmpty(system)) return null;
             var nob = NetworkManager.GetPooledInstantiated(prefab, true);
+            var component = nob.GetComponent<T>();
+            Debug.Log(RequiredSystems);
+            Debug.Log(component.GetSystemName());
+            if (!RequiredSystems.Contains(component.GetSystemName()))
+            {
+                // cancel the adding of the system, just destroy the instance
+                Destroy(nob.gameObject);
+                return null;
+            }
+
             var t = nob.transform;
             t.parent = transform;
             t.localPosition = Vector3.zero;
-            var component = nob.GetComponent<T>();
             component.Entity = this;
             component.enabled = false;
             Systems[system] = component;
