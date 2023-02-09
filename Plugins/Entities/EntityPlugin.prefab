@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7928195382262924772
+--- !u!1 &6339804716151986273
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7928195382262924775}
-  - component: {fileID: 7928195382262924774}
-  - component: {fileID: 7928195382262924773}
-  - component: {fileID: 7673950401752247845}
+  - component: {fileID: 6339804716151986284}
+  - component: {fileID: 6339804716151986287}
+  - component: {fileID: 6339804716151986286}
+  - component: {fileID: 6563117878114018670}
   m_Layer: 0
-  m_Name: CharacterPlugin
+  m_Name: EntityPlugin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7928195382262924775
+--- !u!4 &6339804716151986284
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7928195382262924772}
+  m_GameObject: {fileID: 6339804716151986273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 372.49734, y: 394.04956, z: -2.4127414}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,32 +34,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7928195382262924774
+--- !u!114 &6339804716151986287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7928195382262924772}
+  m_GameObject: {fileID: 6339804716151986273}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a6c811d140a43e8a214573005ffdda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 7928195382262924773}
-  _networkObjectCache: {fileID: 7928195382262924773}
-  Name: Character
+  _addedNetworkObject: {fileID: 6339804716151986286}
+  _networkObjectCache: {fileID: 6339804716151986286}
+  Name: Entity
   Description: 
-  Dependencies:
-  - Entity
---- !u!114 &7928195382262924773
+  Dependencies: []
+--- !u!114 &6339804716151986286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7928195382262924772}
+  m_GameObject: {fileID: 6339804716151986273}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
@@ -69,7 +68,8 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
-  - {fileID: 7928195382262924774}
+  - {fileID: 6339804716151986287}
+  - {fileID: 6563117878114018670}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -77,35 +77,30 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 7
+  <PrefabId>k__BackingField: 5
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 584410112
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 11095434433837475103
+  <AssetPathHash>k__BackingField: 12551704682284645897
   _sceneNetworkObjects:
+  - {fileID: 6339804716151986286}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 7928195382262924773}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &7673950401752247845
+--- !u!114 &6563117878114018670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7928195382262924772}
+  m_GameObject: {fileID: 6339804716151986273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 250d090d034f488fbc9a5e8a17f993ab, type: 3}
+  m_Script: {fileID: 11500000, guid: ffe42e8291f042f5aace76588a466b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
-  _addedNetworkObject: {fileID: 7928195382262924773}
-  _networkObjectCache: {fileID: 0}
-  CharacterPrefab: {fileID: 6293942673535413327, guid: 239100eea5b23b04c944e0d9252c7852, type: 3}
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 6339804716151986286}
+  _networkObjectCache: {fileID: 6339804716151986286}
+  EntityList: []
