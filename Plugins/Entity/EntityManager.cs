@@ -1,6 +1,6 @@
 ﻿using FishNet.Object;
 
-namespace OpenFish.Core
+namespace OpenFish.Plugins.Entity
 {
     public class EntityManager : NetworkBehaviour
     {
