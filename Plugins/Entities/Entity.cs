@@ -27,7 +27,7 @@ namespace OpenFish.Plugins.Entities
 
         void OnReadyChange(bool previous, bool next, bool asServer)
         {
-            if (!previous && next)
+            if (!previous && next && asServer)
             {
                 OnReady?.Invoke();
             }

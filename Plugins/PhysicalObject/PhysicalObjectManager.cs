@@ -2,9 +2,9 @@
 using FishNet.Object;
 using OpenFish.Plugins.Entities;
 
-namespace OpenFish.Plugins.Character
+namespace OpenFish.Plugins.PhysicalObject
 {
-    public class CharacterManager : NetworkBehaviour
+    public class PhysicalObjectManager : NetworkBehaviour
     {
         public NetworkObject CharacterPrefab;
 
@@ -23,8 +23,8 @@ namespace OpenFish.Plugins.Character
         void AddCharacter(Entity entity, bool asServer)
         {
             if (!IsServer || !asServer) return;
-            if (!entity.RequiredSystems.Contains("character")) return;
-           entity.AddSystem<CharacterSystem>(CharacterPrefab);
+            if (!entity.RequiredSystems.Contains("physical-object")) return;
+           entity.AddSystem<PhysicalObjectSystem>(CharacterPrefab);
         }
     }
 }

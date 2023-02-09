@@ -180,7 +180,7 @@ MonoBehaviour:
   EntityId: 1
   EntityType: player
   RequiredSystems:
-  - character
+  - physical-object
 --- !u!1 &4961167117847471436
 GameObject:
   m_ObjectHideFlags: 0

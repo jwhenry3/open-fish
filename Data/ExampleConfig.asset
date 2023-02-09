@@ -15,3 +15,4 @@ MonoBehaviour:
   EntityId: 
   EntityType: player
   Name: Player
+  Prefab: {fileID: 3448052466939932460, guid: d061c18907cb6a242b1a493ac82c7594, type: 3}

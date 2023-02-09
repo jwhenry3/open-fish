@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7928195382262924773}
   - component: {fileID: 7673950401752247845}
   m_Layer: 0
-  m_Name: CharacterPlugin
+  m_Name: PhysicalObjectPlugin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
   - {fileID: 7928195382262924774}
+  - {fileID: 7673950401752247845}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -77,11 +78,11 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 7
+  <PrefabId>k__BackingField: 3
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 584410112
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 11095434433837475103
+  <AssetPathHash>k__BackingField: 5655719897947351632
   _sceneNetworkObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250d090d034f488fbc9a5e8a17f993ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 7928195382262924773}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 7928195382262924773}
   CharacterPrefab: {fileID: 6293942673535413327, guid: 239100eea5b23b04c944e0d9252c7852, type: 3}

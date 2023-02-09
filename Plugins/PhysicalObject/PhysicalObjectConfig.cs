@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using FishNet.Object;
 using UnityEngine;
 
-namespace OpenFish.Plugins.Character
+namespace OpenFish.Plugins.PhysicalObject
 {
-    [CreateAssetMenu(fileName = "CharacterConfig", menuName = "OpenFish/Characters")]
+    [CreateAssetMenu(fileName = "PhysicalObjectConfig", menuName = "OpenFish/PhysicalObject")]
     [Serializable]
-    public class CharacterConfig : ScriptableObject
+    public class PhysicalObjectConfig : ScriptableObject
     {
-        public static Dictionary<string, CharacterConfig> IdConfigs;
-        public static Dictionary<string, CharacterConfig> TypeConfigs;
+        public static Dictionary<string, PhysicalObjectConfig> IdConfigs;
+        public static Dictionary<string, PhysicalObjectConfig> TypeConfigs;
         public string EntityId;
         public string EntityType;
         public string Name;
+        public NetworkObject Prefab;
 
         private void OnEnable()
         {
