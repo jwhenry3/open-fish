@@ -16,7 +16,7 @@ namespace OpenFish.Plugins.Entities
         public string EntityType;
 
         public string[] RequiredSystems;
-        public readonly SyncList<string> LoadedSystems = new();
+        public readonly List<string> LoadedSystems = new();
         public readonly Dictionary<string, EntitySystem> Systems = new();
 
         public override void OnStartNetwork()
@@ -68,7 +68,7 @@ namespace OpenFish.Plugins.Entities
             component.enabled = false;
             Systems[system] = component;
             Spawn(nob, Owner);
-            LoadedSystems.Add(component.SystemName.ToLower());
+            LoadedSystems.Add(component.GetSystemName().ToLower());
             OnReady += component.OnEntityReady;
             var count = 0;
             foreach (var systemName in RequiredSystems)

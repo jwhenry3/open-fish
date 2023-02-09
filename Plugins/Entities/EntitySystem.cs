@@ -5,9 +5,12 @@ namespace OpenFish.Plugins.Entities
 {
     public class EntitySystem : NetworkBehaviour
     {
-        public string SystemName;
         public Entity Entity;
 
+        public virtual string GetSystemName()
+        {
+            return "undefined";
+        }
         public virtual void OnEntityReady()
         {
             

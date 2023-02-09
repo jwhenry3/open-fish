@@ -7,7 +7,10 @@ namespace OpenFish.Plugins.Character
 {
     public class CharacterSystem : EntitySystem
     {
-        public new string SystemName = "character";
+        public override string GetSystemName()
+        {
+            return "character";
+        }
         [SyncVar] public string Name;
         
         public GameObject PhysicalObject;
@@ -17,6 +20,8 @@ namespace OpenFish.Plugins.Character
             base.OnEntityReady();
             if (IsServer)
             {
+                if (CharacterConfig.TypeConfigs.ContainsKey(Entity.EntityType))
+                    Name = CharacterConfig.TypeConfigs[Entity.EntityType].Name;
                 if (CharacterConfig.IdConfigs.ContainsKey(Entity.EntityId))
                     Name = CharacterConfig.IdConfigs[Entity.EntityId].Name;
             }

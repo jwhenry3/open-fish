@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace OpenFish.Plugins.Character
 {
+    [CreateAssetMenu(fileName = "CharacterConfig", menuName = "OpenFish/Characters")]
+    [Serializable]
     public class CharacterConfig : ScriptableObject
     {
         public static Dictionary<string, CharacterConfig> IdConfigs;
