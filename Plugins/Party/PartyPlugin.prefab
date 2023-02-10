@@ -79,7 +79,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 4
+  <PrefabId>k__BackingField: 8
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
@@ -110,4 +110,4 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 4979861505853958591}
   _networkObjectCache: {fileID: 4979861505853958591}
-  Prefab: {fileID: 8246387116302901255, guid: 57715b497d47cae489d7fae787a0503d, type: 3}
+  Prefab: {fileID: -8141187345163486917, guid: 57715b497d47cae489d7fae787a0503d, type: 3}

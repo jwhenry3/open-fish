@@ -47,6 +47,7 @@ namespace OpenFish.Plugins.Entities
         public override void OnStartNetwork()
         {
             base.OnStartNetwork();
+            transform.position = Vector3.up * 5000;
             NetworkManager.GetInstance<EntityManager>().AddEntity(this);
         }
 
@@ -78,14 +79,13 @@ namespace OpenFish.Plugins.Entities
         }
 
 
-        public T AddSystem<T, R>(NetworkObject prefab, bool parentUnder)
+        public T AddSystem<T>(NetworkObject prefab, bool parentToEntity)
             where T : EntitySystem
-            where R : EntitySystem
         {
             if (!IsServer) return null;
             if (prefab == null) return null;
             var system = typeof(T).AssemblyQualifiedName;
-            if (String.IsNullOrEmpty(system)) return null;
+            if (system == null) return null;
             var nob = NetworkManager.GetPooledInstantiated(prefab, true);
             var component = nob.GetComponent<T>();
 
@@ -97,15 +97,8 @@ namespace OpenFish.Plugins.Entities
             }
 
             var t = nob.transform;
-            var parent = transform;
-            if (parentUnder)
-            {
-                var parentComponent = GetComponentInChildren<R>();
-                if (parentComponent != null)
-                    parent = parentComponent.transform;
-            }
-
-            t.parent = parent;
+            if (parentToEntity)
+                t.parent = transform;
             t.localPosition = Vector3.zero;
             component.Entity = this;
             component.enabled = false;
@@ -116,16 +109,9 @@ namespace OpenFish.Plugins.Entities
             var count = 0;
             foreach (var systemName in RequiredSystems)
                 count += LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0;
-
-            if (count == RequiredSystems.Count)
+            if (count >= RequiredSystems.Count)
                 Ready = true;
             return component;
-        }
-
-        public T AddSystem<T>(NetworkObject prefab)
-            where T : EntitySystem
-        {
-            return AddSystem<T, EntitySystem>(prefab, false);
         }
     }
 }

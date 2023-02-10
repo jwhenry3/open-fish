@@ -15,7 +15,7 @@ namespace OpenFish.Plugins.Entities
         }
         public virtual void OnEntityReady()
         {
-            
+            enabled = true;
         }
 
         protected virtual void OnDestroy()

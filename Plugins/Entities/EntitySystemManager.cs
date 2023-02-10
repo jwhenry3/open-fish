@@ -6,6 +6,7 @@ namespace OpenFish.Plugins.Entities
 {
     public class EntitySystemManager<T> : NetworkBehaviour where T : EntitySystem
     {
+        protected virtual bool ParentToEntity() => true;
         public NetworkObject Prefab;
 
         public override void OnStartNetwork()
@@ -29,16 +30,7 @@ namespace OpenFish.Plugins.Entities
         protected virtual void AddSystem(Entity entity, bool asServer)
         {
             if (!IsServer || !asServer) return;
-            entity.AddSystem<T>(Prefab);
-        }
-    }
-    
-    public class EntitySystemManager<T, Parent> : EntitySystemManager<T> where T : EntitySystem where Parent : EntitySystem
-    {
-        protected override void AddSystem(Entity entity, bool asServer)
-        {
-            if (!IsServer || !asServer) return;
-            entity.AddSystem<T, Parent>(Prefab, true);
+            entity.AddSystem<T>(Prefab, ParentToEntity());
         }
     }
 }

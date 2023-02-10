@@ -14,6 +14,14 @@ namespace OpenFish.Plugins.PhysicalObject
         public PhysicalObjectConfig TypeConfig;
         public PhysicalObjectConfig IdConfig;
 
+        public Transform Object;
+        private Transform t;
+
+        private void Awake()
+        {
+            t = transform;
+        }
+
         public override void OnEntityReady()
         {
             base.OnEntityReady();
@@ -35,10 +43,20 @@ namespace OpenFish.Plugins.PhysicalObject
 
             if (prefab == null) return;
             var instance = NetworkManager.GetPooledInstantiated(prefab, true);
-            var transform1 = instance.transform;
-            transform1.parent = transform;
-            transform1.localPosition = prefab.transform.position;
+            Object = instance.transform;
             Spawn(instance, Owner);
+        }
+        
+        private float tick;
+        private void Update()
+        {
+            if (t != null && Object != null)
+            {
+                tick += Time.deltaTime;
+                if (!(tick > 1)) return;
+                t.position = Object.position;
+                tick = 0;
+            }
         }
     }
 }
