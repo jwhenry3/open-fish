@@ -8,6 +8,8 @@ namespace OpenFish.Plugins.Entities
     public class EntityManager : NetworkBehaviour
     {
         public event Action<Entity, bool> EntityAdded;
+
+        public EntityConfigRepo EntityConfigRepo;
         
         [SerializeField] private List<Entity> EntityList;
         private Dictionary<string, Entity> Entities;

@@ -26,16 +26,16 @@ namespace OpenFish.Plugins.Entities
         {
             if (_requiredSystems != null) return _requiredSystems;
             List<string> systems = new();
-            if (EntityConfig.TypeConfigs != null && EntityConfig.TypeConfigs.ContainsKey(EntityType))
+            if (EntityConfigRepo.TypeConfigs.ContainsKey(EntityType))
             {
-                foreach (var system in EntityConfig.TypeConfigs[EntityType].RequiredSystems)
+                foreach (var system in EntityConfigRepo.TypeConfigs[EntityType].RequiredSystems)
                     if (!systems.Contains(system))
                         systems.Add(system);
             }
 
-            if (EntityConfig.IdConfigs != null && EntityConfig.IdConfigs.ContainsKey(EntityId))
+            if (EntityConfigRepo.IdConfigs.ContainsKey(EntityId))
             {
-                foreach (var system in EntityConfig.IdConfigs[EntityId].RequiredSystems)
+                foreach (var system in EntityConfigRepo.IdConfigs[EntityId].RequiredSystems)
                     if (!systems.Contains(system))
                         systems.Add(system);
             }
@@ -95,7 +95,6 @@ namespace OpenFish.Plugins.Entities
                 Destroy(nob.gameObject);
                 return null;
             }
-
             var t = nob.transform;
             if (parentToEntity)
                 t.parent = transform;

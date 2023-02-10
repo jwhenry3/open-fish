@@ -9,17 +9,13 @@ namespace OpenFish.Plugins.PhysicalObject
     [Serializable]
     public class PhysicalObjectConfig : ScriptableObject
     {
-        public static Dictionary<string, PhysicalObjectConfig> IdConfigs;
-        public static Dictionary<string, PhysicalObjectConfig> TypeConfigs;
         public string EntityId;
         public string EntityType;
         public string Name;
         public NetworkObject Prefab;
 
-        private void OnEnable()
+        public void Store(Dictionary<string,PhysicalObjectConfig> IdConfigs, Dictionary<string,PhysicalObjectConfig> TypeConfigs)
         {
-            IdConfigs = IdConfigs ?? new();
-            TypeConfigs = TypeConfigs ?? new();
             if (!String.IsNullOrEmpty(EntityId))
                 IdConfigs[EntityId] = this;
             if (!String.IsNullOrEmpty(EntityType))

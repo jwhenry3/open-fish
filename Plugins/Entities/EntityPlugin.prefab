@@ -103,4 +103,5 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 6339804716151986286}
   _networkObjectCache: {fileID: 6339804716151986286}
+  EntityConfigRepo: {fileID: 11400000, guid: ed91e1eafd311d449bc7db6a8a806f21, type: 2}
   EntityList: []

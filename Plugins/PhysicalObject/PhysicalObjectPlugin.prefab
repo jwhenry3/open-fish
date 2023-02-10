@@ -110,3 +110,4 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 7928195382262924773}
   _networkObjectCache: {fileID: 7928195382262924773}
   Prefab: {fileID: 6293942673535413327, guid: 239100eea5b23b04c944e0d9252c7852, type: 3}
+  Repo: {fileID: 11400000, guid: 5f858ebf61e83f449b2658477de26af8, type: 2}
