@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using FishNet.Object;
 
 namespace OpenFish.Plugins.Entities
@@ -25,10 +26,19 @@ namespace OpenFish.Plugins.Entities
                 NetworkManager.GetInstance<EntityManager>().EntityAdded -= AddSystem;
         }
 
-        private void AddSystem(Entity entity, bool asServer)
+        protected virtual void AddSystem(Entity entity, bool asServer)
         {
             if (!IsServer || !asServer) return;
             entity.AddSystem<T>(Prefab);
+        }
+    }
+    
+    public class EntitySystemManager<T, Parent> : EntitySystemManager<T> where T : EntitySystem where Parent : EntitySystem
+    {
+        protected override void AddSystem(Entity entity, bool asServer)
+        {
+            if (!IsServer || !asServer) return;
+            entity.AddSystem<T, Parent>(Prefab, true);
         }
     }
 }

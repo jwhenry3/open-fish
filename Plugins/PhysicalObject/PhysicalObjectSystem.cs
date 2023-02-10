@@ -8,10 +8,7 @@ namespace OpenFish.Plugins.PhysicalObject
 {
     public class PhysicalObjectSystem : EntitySystem
     {
-        public override string GetSystemName()
-        {
-            return "physical-object";
-        }
+        public override string GetSystemName() => "physical-object";
 
         [SyncVar] public string Name;
         public PhysicalObjectConfig TypeConfig;

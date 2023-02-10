@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4979861505853958589}
   - component: {fileID: 4979861505853958588}
   - component: {fileID: 4979861505853958591}
+  - component: {fileID: 3314882520650282025}
   m_Layer: 0
   m_Name: PartyPlugin
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   Description: 
   Dependencies:
   - Entity
-  - Character
+  - PhysicalObject
 --- !u!114 &4979861505853958591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +71,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
   - {fileID: 4979861505853958588}
+  - {fileID: 3314882520650282025}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -79,7 +81,7 @@ MonoBehaviour:
   NetworkObserver: {fileID: 0}
   <PrefabId>k__BackingField: 4
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 584410112
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 8359306570832273442
   _sceneNetworkObjects:
@@ -93,3 +95,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &3314882520650282025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979861505853958590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36ed875602246d09e0e6de9dc7db58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 4979861505853958591}
+  _networkObjectCache: {fileID: 4979861505853958591}
+  Prefab: {fileID: 8246387116302901255, guid: 57715b497d47cae489d7fae787a0503d, type: 3}
