@@ -12,15 +12,16 @@ namespace OpenFish.Plugins.Pet
         private Transform Object;
         private Transform t;
         private float tick;
-        public override void OnEntityReady()
+        public override void OnEntityReady(bool asServer)
         {
-            base.OnEntityReady();
+            base.OnEntityReady(asServer);
             t = transform;
             Object = Entity.GetSystem<PhysicalObjectSystem>().transform;
         }
 
         private void Update()
         {
+            if (!IsServer) return;
             if (t != null && Object != null)
             {
                 tick += Time.deltaTime;

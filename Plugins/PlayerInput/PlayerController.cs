@@ -1,41 +1,22 @@
 ﻿using System;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace OpenFish.Examples
 {
-
-
     public class PlayerController : NetworkBehaviour
     {
-        [SerializeField]
-        private GameObject _camera;
-        [SerializeField]
-        private float _moveRate = 4f;
-        [SerializeField]
-        private bool _clientAuth = true;
+        [SerializeField] public GameObject _camera;
+        [SerializeField] private float _moveRate = 4f;
+        [SerializeField] private bool _clientAuth = true;
 
-        private Transform objectTransform;
+        public Transform ObjectTransform;
 
-        private void Awake()
-        {
-            objectTransform = transform.parent;
-        }
-
-        public override void OnStartClient()
-        {
-            base.OnStartClient();
-            if (base.IsOwner)
-                _camera.SetActive(true);
-        }
 
         private void Update()
         {
-            if (!base.IsOwner)
-                return;
-            if (objectTransform == null)
-                objectTransform = transform.parent;
-            if (objectTransform == null)
+            if (!IsOwner || ObjectTransform == null || _camera == null)
                 return;
             float hor = Input.GetAxisRaw("Horizontal");
             float ver = Input.GetAxisRaw("Vertical");
@@ -45,8 +26,9 @@ namespace OpenFish.Examples
              * when changing scenes.             */
             if (_clientAuth || (!_clientAuth && base.IsServer))
             {
-                if (!Physics.Linecast(objectTransform.position + new Vector3(0f, 0.3f, 0f), objectTransform.position - (Vector3.one * 20f)))
-                    objectTransform.position += new Vector3(0f, 3f, 0f);
+                if (!Physics.Linecast(ObjectTransform.position + new Vector3(0f, 0.3f, 0f),
+                        ObjectTransform.position - (Vector3.one * 20f)))
+                    ObjectTransform.position += new Vector3(0f, 3f, 0f);
             }
 
             if (_clientAuth)
@@ -65,7 +47,7 @@ namespace OpenFish.Examples
         {
             float gravity = -10f * Time.deltaTime;
             //If ray hits floor then cancel gravity.
-            Ray ray = new Ray(objectTransform.position + new Vector3(0f, 0.05f, 0f), -Vector3.up);
+            Ray ray = new Ray(ObjectTransform.position + new Vector3(0f, 0.05f, 0f), -Vector3.up);
             if (Physics.Raycast(ray, 0.1f + -gravity))
                 gravity = 0f;
 
@@ -75,11 +57,8 @@ namespace OpenFish.Examples
                 gravity,
                 ver * _moveRate * Time.deltaTime);
 
-            objectTransform.position += objectTransform.TransformDirection(direction);
-            objectTransform.Rotate(new Vector3(0f, hor * 100f * Time.deltaTime, 0f));
+            ObjectTransform.position += ObjectTransform.TransformDirection(direction);
+            ObjectTransform.Rotate(new Vector3(0f, hor * 100f * Time.deltaTime, 0f));
         }
-
     }
-
-
 }

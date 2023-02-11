@@ -9,7 +9,7 @@ namespace OpenFish.Plugins.Entities
 {
     public class Entity : NetworkBehaviour
     {
-        public event Action OnReady;
+        public event Action<bool> OnReady;
 
         [SyncVar(OnChange = nameof(OnReadyChange))]
         public bool Ready;
@@ -53,9 +53,9 @@ namespace OpenFish.Plugins.Entities
 
         void OnReadyChange(bool previous, bool next, bool asServer)
         {
-            if (!previous && next && asServer)
+            if (!previous && next)
             {
-                OnReady?.Invoke();
+                OnReady?.Invoke(asServer);
             }
         }
 

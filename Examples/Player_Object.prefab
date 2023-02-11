@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4961167117463928296}
   - component: {fileID: 720745788891125426}
-  - component: {fileID: 3195629109127133537}
   - component: {fileID: 3093617260514021226}
   - component: {fileID: 8321917232744453398}
   - component: {fileID: 8707509141150384640}
@@ -55,7 +54,7 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
-  - {fileID: 3195629109127133537}
+  - {fileID: 0}
   - {fileID: 7278307334931221985}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
@@ -71,24 +70,6 @@ MonoBehaviour:
   <AssetPathHash>k__BackingField: 6408191989329447034
   _sceneNetworkObjects:
   - {fileID: 720745788891125426}
---- !u!114 &3195629109127133537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4961167117463928292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e4f626a9ca9704f9befe7673a8dd15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 720745788891125426}
-  _networkObjectCache: {fileID: 720745788891125426}
-  _camera: {fileID: 4961167117847471436}
-  _moveRate: 4
-  _clientAuth: 1
 --- !u!114 &3093617260514021226
 MonoBehaviour:
   m_ObjectHideFlags: 0

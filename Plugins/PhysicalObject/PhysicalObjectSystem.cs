@@ -11,6 +11,7 @@ namespace OpenFish.Plugins.PhysicalObject
     {
         public override string GetSystemName() => "physical-object";
 
+        public event Action ObjectInstantiated;
         [SyncVar] public string Name;
         public PhysicalObjectConfig TypeConfig;
         public PhysicalObjectConfig IdConfig;
@@ -23,10 +24,10 @@ namespace OpenFish.Plugins.PhysicalObject
             t = transform;
         }
 
-        public override void OnEntityReady()
+        public override void OnEntityReady(bool asServer)
         {
-            base.OnEntityReady();
-            if (!IsServer) return;
+            base.OnEntityReady(asServer);
+            if (!asServer) return;
             NetworkObject prefab = null;
             if (PhysicalObjectConfigRepo.TypeConfigs.ContainsKey(Entity.EntityType))
             {
@@ -48,6 +49,7 @@ namespace OpenFish.Plugins.PhysicalObject
             Object.parent = t.parent;
             instance.gameObject.name = Entity.EntityId + ":physical-object:instance";
             Spawn(instance, Owner);
+            ObjectInstantiated?.Invoke();
         }
         
         private float tick;

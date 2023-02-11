@@ -18,3 +18,4 @@ MonoBehaviour:
   - physical-object
   - party
   - pet-owner
+  - player-input

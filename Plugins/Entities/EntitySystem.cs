@@ -14,7 +14,7 @@ namespace OpenFish.Plugins.Entities
         {
             return "undefined";
         }
-        public virtual void OnEntityReady()
+        public virtual void OnEntityReady(bool asServer)
         {
             enabled = true;
         }
