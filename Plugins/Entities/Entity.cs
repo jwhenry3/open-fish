@@ -80,7 +80,7 @@ namespace OpenFish.Plugins.Entities
         }
 
 
-        public T AddSystem<T>(NetworkObject prefab, bool parentToEntity)
+        public T AddSystem<T>(NetworkObject prefab)
             where T : EntitySystem
         {
             if (!IsServer) return null;
@@ -97,21 +97,29 @@ namespace OpenFish.Plugins.Entities
                 return null;
             }
             var t = nob.transform;
-            if (parentToEntity)
-                t.parent = transform;
             t.localPosition = Vector3.zero;
             component.Entity = this;
             component.enabled = false;
+            component.gameObject.name = EntityId + ":" + component.GetSystemName();
             Systems[system] = component;
             Spawn(nob, Owner);
             LoadedSystems.Add(component.GetSystemName().ToLower());
             OnReady += component.OnEntityReady;
-            var count = 0;
-            foreach (var systemName in RequiredSystems)
-                count += LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0;
+            var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
             if (count >= RequiredSystems.Count)
                 Ready = true;
             return component;
+        }
+        
+        /**
+         * Use this method when moving an entity between scenes in FishNet
+         * so you can make sure all systems along with the entity are sent to the new scene
+         */
+        public NetworkObject[] GetMovableNetworkObjects()
+        {
+            var list = Systems.SelectMany(kvp => kvp.Value.GetMovableNetworkObjects()).ToList();
+            list.Insert(0, GetComponent<NetworkObject>());
+            return list.ToArray();
         }
     }
 }

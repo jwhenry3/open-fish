@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FishNet.Object;
+using UnityEngine;
 
 namespace OpenFish.Plugins.Entities
 {
     public class EntitySystemManager<T> : NetworkBehaviour where T : EntitySystem
     {
-        protected virtual bool ParentToEntity() => true;
         public NetworkObject Prefab;
+        protected T System;
+        protected readonly Dictionary<string, GameObject> EntitySystems = new();
 
         public override void OnStartNetwork()
         {
@@ -30,7 +33,17 @@ namespace OpenFish.Plugins.Entities
         protected virtual void AddSystem(Entity entity, bool asServer)
         {
             if (!IsServer || !asServer) return;
-            entity.AddSystem<T>(Prefab, ParentToEntity());
+            System = entity.AddSystem<T>(Prefab);
+            if (System != null)
+                EntitySystems[entity.EntityId] = System.gameObject;
+        }
+
+        public virtual List<NetworkObject> GetMovableNetworkObjects()
+        {
+            var list = new List<NetworkObject>();
+            foreach (var nob in System.GetMovableNetworkObjects())
+                list.Add(nob);
+            return list;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using OpenFish.Plugins.Entities;
@@ -45,6 +46,7 @@ namespace OpenFish.Plugins.PhysicalObject
             var instance = NetworkManager.GetPooledInstantiated(prefab, true);
             Object = instance.transform;
             Object.parent = t.parent;
+            instance.gameObject.name = Entity.EntityId + ":physical-object:instance";
             Spawn(instance, Owner);
         }
         
@@ -58,6 +60,13 @@ namespace OpenFish.Plugins.PhysicalObject
                 t.position = Object.position;
                 tick = 0;
             }
+        }
+
+        public override List<NetworkObject> GetMovableNetworkObjects()
+        {
+            var list = base.GetMovableNetworkObjects();
+            list.Add(Object.GetComponent<NetworkObject>());
+            return list;
         }
     }
 }
