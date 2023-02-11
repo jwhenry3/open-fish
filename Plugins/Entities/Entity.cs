@@ -62,7 +62,8 @@ namespace OpenFish.Plugins.Entities
 
         public void OnDestroy()
         {
-            NetworkManager.GetInstance<EntityManager>().RemoveEntity(this);
+            if (NetworkManager.GetInstance<EntityManager>())
+                NetworkManager.GetInstance<EntityManager>().RemoveEntity(this);
         }
 
         public T GetSystem<T>() where T : EntitySystem
