@@ -49,10 +49,10 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7928195382262924773}
   _networkObjectCache: {fileID: 7928195382262924773}
-  Name: PhysicalObject
+  Name: physical-object
   Description: 
   Dependencies:
-  - Entity
+  - entity
 --- !u!114 &7928195382262924773
 MonoBehaviour:
   m_ObjectHideFlags: 0

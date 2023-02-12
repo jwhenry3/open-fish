@@ -1,9 +1,7 @@
-﻿using System;
-using FishNet.Object;
+﻿using FishNet.Object;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace OpenFish.Examples
+namespace OpenFish.Plugins.PlayerControl
 {
     public class PlayerController : NetworkBehaviour
     {

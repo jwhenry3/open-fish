@@ -1,13 +1,12 @@
-﻿using OpenFish.Examples;
-using OpenFish.Plugins.Entities;
+﻿using OpenFish.Plugins.Entities;
 using OpenFish.Plugins.PhysicalObject;
 using UnityEngine;
 
-namespace OpenFish.Plugins.PlayerInput
+namespace OpenFish.Plugins.PlayerControl
 {
-    public class PlayerInputSystem : EntitySystem
+    public class PlayerControlSystem : EntitySystem
     {
-        public override string GetSystemName() => "player-input";
+        public override string GetSystemName() => "player-control";
         
         public PhysicalObjectSystem ObjectSystem;
         public PlayerController Controller;

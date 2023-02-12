@@ -43,12 +43,21 @@ namespace OpenFish.Plugins.Entities
             _requiredSystems = systems;
             return systems;
         }
+        
+        private void AddEntityOnLoad(EntityManager manager)
+        {
+            Debug.Log("Add entity!");
+            manager.AddEntity(this);
+        }
 
         public override void OnStartNetwork()
         {
             base.OnStartNetwork();
             transform.position = Vector3.up * 5000;
-            NetworkManager.GetInstance<EntityManager>().AddEntity(this);
+            EntityManager.Loaded += AddEntityOnLoad;
+            var instance = NetworkManager.GetInstance<EntityManager>();
+            if (instance != null)
+                instance.AddEntity(this);
         }
 
         void OnReadyChange(bool previous, bool next, bool asServer)
@@ -64,6 +73,8 @@ namespace OpenFish.Plugins.Entities
         {
             if (NetworkManager.GetInstance<EntityManager>())
                 NetworkManager.GetInstance<EntityManager>().RemoveEntity(this);
+            
+            EntityManager.Loaded -= AddEntityOnLoad;
         }
 
         public T GetSystem<T>() where T : EntitySystem
@@ -83,13 +94,14 @@ namespace OpenFish.Plugins.Entities
         public T AddSystem<T>(NetworkObject prefab)
             where T : EntitySystem
         {
+            Debug.Log("Adding system!");
             if (!IsServer) return null;
             if (prefab == null) return null;
             var system = typeof(T).AssemblyQualifiedName;
             if (system == null) return null;
             var nob = NetworkManager.GetPooledInstantiated(prefab, true);
             var component = nob.GetComponent<T>();
-
+            Debug.Log(system);
             if (!RequiredSystems.Contains(component.GetSystemName()))
             {
                 // cancel the adding of the system, just destroy the instance
@@ -106,6 +118,7 @@ namespace OpenFish.Plugins.Entities
             LoadedSystems.Add(component.GetSystemName().ToLower());
             OnReady += component.OnEntityReady;
             var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
+            Debug.Log(count);
             if (count >= RequiredSystems.Count)
                 Ready = true;
             return component;

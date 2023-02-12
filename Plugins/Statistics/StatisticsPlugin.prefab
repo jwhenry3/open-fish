@@ -48,10 +48,10 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 6780475939666403065}
   _networkObjectCache: {fileID: 6780475939666403065}
-  Name: Statistics
+  Name: statistics
   Description: 
   Dependencies:
-  - Entity
+  - entity
 --- !u!114 &6780475939666403065
 MonoBehaviour:
   m_ObjectHideFlags: 0

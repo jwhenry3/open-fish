@@ -49,7 +49,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 6339804716151986286}
   _networkObjectCache: {fileID: 6339804716151986286}
-  Name: Entity
+  Name: entity
   Description: 
   Dependencies: []
 --- !u!114 &6339804716151986286

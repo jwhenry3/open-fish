@@ -48,11 +48,11 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 3775826072558312510}
   _networkObjectCache: {fileID: 3775826072558312510}
-  Name: Equipment
+  Name: equipment
   Description: 
   Dependencies:
-  - Entity
-  - Character
+  - entity
+  - physical-object
 --- !u!114 &3775826072558312510
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,7 +21,10 @@ namespace OpenFish.Plugins.Entities
         public override void OnStartServer()
         {
             base.OnStartServer();
-            NetworkManager.GetInstance<EntityManager>().EntityAdded += AddSystem;
+            var manager = NetworkManager.GetInstance<EntityManager>();
+            foreach (var kvp in manager.Entities)
+                AddSystem(kvp.Value, true);
+            manager.EntityAdded += AddSystem;
         }
 
         private void OnDestroy()

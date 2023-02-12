@@ -7,17 +7,20 @@ namespace OpenFish.Plugins.Entities
 {
     public class EntityManager : NetworkBehaviour
     {
+        public static event Action<EntityManager> Loaded;
         public event Action<Entity, bool> EntityAdded;
 
         public EntityConfigRepo EntityConfigRepo;
         
         [SerializeField] private List<Entity> EntityList;
-        private Dictionary<string, Entity> Entities;
+        public readonly Dictionary<string, Entity> Entities = new();
+
+
         public override void OnStartNetwork()
         {
             base.OnStartNetwork();
-            Entities = Entities ?? new();
             base.NetworkManager.RegisterInstance(this);
+            Loaded?.Invoke(this);
         }
 
         public void AddEntity(Entity entity)

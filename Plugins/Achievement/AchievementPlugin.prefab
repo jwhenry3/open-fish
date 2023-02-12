@@ -48,10 +48,10 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 7736221237995631172}
   _networkObjectCache: {fileID: 7736221237995631172}
-  Name: Achievement
+  Name: achievement
   Description: 
   Dependencies:
-  - Character
+  - entity
 --- !u!114 &7736221237995631172
 MonoBehaviour:
   m_ObjectHideFlags: 0

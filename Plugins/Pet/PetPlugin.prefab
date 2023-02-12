@@ -50,11 +50,10 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 9200953045533322849}
   _networkObjectCache: {fileID: 9200953045533322849}
-  Name: Pet
+  Name: pet
   Description: 
   Dependencies:
-  - Entity
-  - PhysicalObject
+  - entity
 --- !u!114 &9200953045533322849
 MonoBehaviour:
   m_ObjectHideFlags: 0

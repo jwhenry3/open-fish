@@ -49,11 +49,11 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 4979861505853958591}
   _networkObjectCache: {fileID: 4979861505853958591}
-  Name: Party
+  Name: party
   Description: 
   Dependencies:
-  - Entity
-  - PhysicalObject
+  - entity
+  - physical-object
 --- !u!114 &4979861505853958591
 MonoBehaviour:
   m_ObjectHideFlags: 0

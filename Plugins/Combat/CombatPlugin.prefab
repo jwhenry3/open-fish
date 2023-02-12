@@ -48,11 +48,10 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 4868177878077772521}
   _networkObjectCache: {fileID: 4868177878077772521}
-  Name: Combat
+  Name: combat
   Description: 
   Dependencies:
-  - Entity
-  - Character
+  - entity
 --- !u!114 &4868177878077772521
 MonoBehaviour:
   m_ObjectHideFlags: 0

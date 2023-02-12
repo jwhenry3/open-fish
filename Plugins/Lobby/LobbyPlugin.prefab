@@ -48,7 +48,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 5318471789816754185}
   _networkObjectCache: {fileID: 5318471789816754185}
-  Name: Lobby
+  Name: lobby
   Description: 
   Dependencies: []
 --- !u!114 &5318471789816754185

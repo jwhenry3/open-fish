@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a75efbaa6e4ce79c8ab1849fd3d2bf, type: 3}
-  m_Name: Player_PhysicalObject
+  m_Script: {fileID: 11500000, guid: 2b87bdf9dce4422e8039e0b1f6830a9e, type: 3}
+  m_Name: NPC_Entity
   m_EditorClassIdentifier: 
   EntityId: 
-  EntityType: player
-  Name: Player
-  Prefab: {fileID: 720745788891125426, guid: 5f6a9d8320e01bd45ad92bc40764cf42, type: 3}
+  EntityType: npc
+  RequiredSystems:
+  - physical-object
