@@ -16,7 +16,6 @@ namespace OpenFish.Plugins.PlayerInput
         {
             if (!IsOwner) return;
             Controller.ObjectTransform = ObjectSystem.Object;
-            Debug.Log(ObjectSystem.Object.name);
             foreach (Transform child in ObjectSystem.Object)
             {
                 var cam = child.GetComponent<Camera>();
