@@ -9,7 +9,7 @@ namespace OpenFish.Plugins.Entities
         
         public Entity Entity;
         
-
+        
         public virtual string GetSystemName()
         {
             return "undefined";

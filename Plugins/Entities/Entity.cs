@@ -94,14 +94,12 @@ namespace OpenFish.Plugins.Entities
         public T AddSystem<T>(NetworkObject prefab)
             where T : EntitySystem
         {
-            Debug.Log("Adding system!");
             if (!IsServer) return null;
             if (prefab == null) return null;
             var system = typeof(T).AssemblyQualifiedName;
             if (system == null) return null;
             var nob = NetworkManager.GetPooledInstantiated(prefab, true);
             var component = nob.GetComponent<T>();
-            Debug.Log(system);
             if (!RequiredSystems.Contains(component.GetSystemName()))
             {
                 // cancel the adding of the system, just destroy the instance
@@ -118,10 +116,27 @@ namespace OpenFish.Plugins.Entities
             LoadedSystems.Add(component.GetSystemName().ToLower());
             OnReady += component.OnEntityReady;
             var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
-            Debug.Log(count);
             if (count >= RequiredSystems.Count)
                 Ready = true;
             return component;
+        }
+
+        public void AddExistingSystem<T>(NetworkObject existingObject)
+            where T : EntitySystem
+        {
+            var system = typeof(T).AssemblyQualifiedName;
+            if (system == null) return;
+            var component = existingObject.GetComponent<T>();
+            component.Entity = this;
+            component.enabled = false;
+            if (component.gameObject != gameObject)
+                component.gameObject.name = EntityId + ":" + component.GetSystemName();
+            Systems[system] = component;
+            LoadedSystems.Add(component.GetSystemName().ToLower());
+            OnReady += component.OnEntityReady;
+            var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
+            if (count >= RequiredSystems.Count)
+                Ready = true;
         }
         
         /**

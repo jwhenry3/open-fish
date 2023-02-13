@@ -16,3 +16,4 @@ MonoBehaviour:
   EntityType: npc
   RequiredSystems:
   - physical-object
+  - ai

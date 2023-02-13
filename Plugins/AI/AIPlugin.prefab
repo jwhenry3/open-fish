@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8212510177971412155}
   - component: {fileID: 8212510177971412154}
   - component: {fileID: 8212510177971412149}
+  - component: {fileID: 3041323837114816608}
   m_Layer: 0
   m_Name: AIPlugin
   m_TagString: Untagged
@@ -92,3 +93,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 8212510177971412149}
+--- !u!114 &3041323837114816608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8212510177971412148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d494d5fd3d34aed883470eb662171c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 8212510177971412149}
+  _networkObjectCache: {fileID: 0}
+  Prefab: {fileID: 5602867601645566501, guid: 3b2c08cf464984b46b87b40a5f59e440, type: 3}
+  Repo: {fileID: 11400000, guid: a3e41cb043ad85048835eadeb1587174, type: 2}
