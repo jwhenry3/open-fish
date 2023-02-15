@@ -13,6 +13,7 @@ namespace OpenFish.Plugins.PhysicalObject
         public string EntityType;
         public string Name;
         public NetworkObject Prefab;
+        public bool UseSpawnPosition;
         public Vector3 SpawnPosition;
 
         public void Store(Dictionary<string,PhysicalObjectConfig> IdConfigs, Dictionary<string,PhysicalObjectConfig> TypeConfigs)

@@ -1,6 +1,8 @@
 using OpenFish.Plugins.Entities;
+using TriInspector;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace OpenFish.Plugins.PlayerControl
 {
@@ -20,18 +22,23 @@ namespace OpenFish.Plugins.PlayerControl
         Down,
     }
 
+    [DeclareBoxGroup("manual", Title = "Can Manually Set")]
     public class PlayerController : MonoBehaviour
     {
         private Entity Entity;
         private Rigidbody _rigidbody;
-        public Camera _camera;
+        [HideInInspector]
+        public Camera Camera;
         private Transform _cameraTransform;
         private Transform _cameraParent;
         private Transform t;
+        [HideInInspector]
         public Transform PhysicalObject;
         private PhysicalObject.PhysicalObject _container;
 
+        [Group("manual")]
         public float speed = 30;
+        [Group("manual")]
         public float cameraSpeed = 120;
 
 
@@ -56,8 +63,8 @@ namespace OpenFish.Plugins.PlayerControl
             t = PhysicalObject.transform;
             _container = PhysicalObject.GetComponent<PhysicalObject.PhysicalObject>();
             _rigidbody = PhysicalObject.GetComponent<Rigidbody>();
-            _camera = _container.Camera;
-            _cameraTransform = _camera.transform;
+            Camera = _container.Camera;
+            _cameraTransform = Camera.transform;
             _cameraParent = _container.CameraHolder;
             _cameraTransform.localPosition = new Vector3(0, 2, -10);
             _cameraTransform.rotation = Quaternion.identity;
@@ -66,7 +73,7 @@ namespace OpenFish.Plugins.PlayerControl
         // Update is called once per frame
         private void Update()
         {
-            if (_camera == null) return;
+            if (Camera == null) return;
 
             MoveInput.Update();
             CameraInput.Update();
@@ -78,7 +85,7 @@ namespace OpenFish.Plugins.PlayerControl
 
         private void LateUpdate()
         {
-            if (_camera == null) return;
+            if (Camera == null) return;
             UpdateCamera();
         }
 
@@ -131,6 +138,15 @@ namespace OpenFish.Plugins.PlayerControl
                 {
                     _container.ObjectHolder.rotation = Quaternion.LookRotation(desiredMoveDirection, Vector3.up);
                 }
+            }
+        }
+        
+        private void Reset()
+        {
+            var system = GetComponent<PlayerControlSystem>();
+            if (system.Controller == null)
+            {
+                system.Controller = this;
             }
         }
     }

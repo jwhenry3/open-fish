@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 42602576657857775}
   - component: {fileID: 42602576657857774}
   - component: {fileID: 42602576657857773}
-  - component: {fileID: 5256290011376332343}
-  - component: {fileID: 829712218037426556}
+  - component: {fileID: 3496777392811425497}
+  - component: {fileID: 6673150946026864247}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -74,7 +74,6 @@ MonoBehaviour:
   - {fileID: 42602576657857768}
   - {fileID: 42602576657857774}
   - {fileID: 42602576657857773}
-  - {fileID: 5256290011376332343}
   - {fileID: 0}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
@@ -124,10 +123,11 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 42602576657857775}
   Entity: {fileID: 42602576657857768}
   Name: 
+  Prefab: {fileID: 0}
   TypeConfig: {fileID: 0}
   IdConfig: {fileID: 0}
   Object: {fileID: 0}
---- !u!114 &5256290011376332343
+--- !u!114 &3496777392811425497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,13 +139,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018714e51a6a4e0ba23266f3b1911ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
+  _componentIndexCache: 255
   _addedNetworkObject: {fileID: 42602576657857775}
-  _networkObjectCache: {fileID: 42602576657857775}
+  _networkObjectCache: {fileID: 0}
   Entity: {fileID: 42602576657857768}
   ObjectSystem: {fileID: 42602576657857773}
-  Controller: {fileID: 829712218037426556}
---- !u!114 &829712218037426556
+  Controller: {fileID: 6673150946026864247}
+--- !u!114 &6673150946026864247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

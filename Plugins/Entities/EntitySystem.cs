@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using FishNet.Object;
+using TriInspector;
 
 namespace OpenFish.Plugins.Entities
 {
+    [DeclareBoxGroup("manual", Title = "Can Set Manually")]
     public class EntitySystem : NetworkBehaviour
     {
-        
+        [Group("manual")]
         public Entity Entity;
         
         
@@ -29,6 +31,13 @@ namespace OpenFish.Plugins.Entities
         {
             List<NetworkObject> list = new() { GetComponent<NetworkObject>() };
             return list;
+        }
+
+        protected override void Reset()
+        {
+            base.Reset();
+            if (!Entity)
+                Entity = GetComponent<Entity>();
         }
     }
 }

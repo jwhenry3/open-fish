@@ -1,14 +1,20 @@
 ﻿using OpenFish.Plugins.Entities;
 using OpenFish.Plugins.PhysicalObject;
+using TriInspector;
 using UnityEngine;
 
 namespace OpenFish.Plugins.PlayerControl
 {
+    [DeclareBoxGroup("manual", Title = "Can Manually Set")]
     public class PlayerControlSystem : EntitySystem
     {
         public override string GetSystemName() => "player-control";
         
+        [Required]
+        [Group("manual")]
         public PhysicalObjectSystem ObjectSystem;
+        [Required]
+        [Group("manual")]
         public PlayerController Controller;
 
         private void SetControllerObject()
@@ -17,7 +23,7 @@ namespace OpenFish.Plugins.PlayerControl
             Controller.PhysicalObject = ObjectSystem.Object;
             Controller.enabled = true;
             Controller.Initialize();
-            Controller._camera.gameObject.SetActive(true);
+            Controller.Camera.gameObject.SetActive(true);
         }
 
         public override void OnEntityReady(bool asServer)
@@ -37,6 +43,14 @@ namespace OpenFish.Plugins.PlayerControl
         {
             if (ObjectSystem != null)
                 ObjectSystem.ObjectInstantiated -= SetControllerObject;
+        }
+        protected override void Reset()
+        {
+            base.Reset();
+            if (!ObjectSystem)
+            {
+                ObjectSystem = GetComponent<PhysicalObjectSystem>();
+            }
         }
     }
 }
