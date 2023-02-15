@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1910328969323896786}
   - component: {fileID: 5161269661840431539}
   - component: {fileID: 7179234911548164468}
-  - component: {fileID: 2779061179668124235}
+  - component: {fileID: 4222109478900821749}
   m_Layer: 0
   m_Name: PlayerControlSystem
   m_TagString: Untagged
@@ -51,7 +51,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 7179234911548164468}
   Entity: {fileID: 0}
   ObjectSystem: {fileID: 0}
-  Controller: {fileID: 2779061179668124235}
+  Controller: {fileID: 4222109478900821749}
 --- !u!114 &7179234911548164468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +69,6 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
   - {fileID: 5161269661840431539}
-  - {fileID: 2779061179668124235}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -79,13 +78,13 @@ MonoBehaviour:
   NetworkObserver: {fileID: 0}
   <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 952226491
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 13372824887891565940
   _sceneNetworkObjects:
   - {fileID: 7179234911548164468}
   - {fileID: 0}
---- !u!114 &2779061179668124235
+--- !u!114 &4222109478900821749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,13 +93,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3687902403981176219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e20836f3cc4b889ca390001a9fb304, type: 3}
+  m_Script: {fileID: 11500000, guid: ee6dd4f576fd44839184fdab41cb79e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 7179234911548164468}
-  _networkObjectCache: {fileID: 7179234911548164468}
   _camera: {fileID: 0}
-  _moveRate: 4
-  _clientAuth: 1
-  ObjectTransform: {fileID: 0}
+  PhysicalObject: {fileID: 0}
+  speed: 30
+  cameraSpeed: 120

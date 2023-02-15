@@ -1,62 +1,137 @@
-﻿using FishNet.Object;
+using OpenFish.Plugins.Entities;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace OpenFish.Plugins.PlayerControl
 {
-    public class PlayerController : NetworkBehaviour
+    public enum Direction
     {
-        [SerializeField] public GameObject _camera;
-        [SerializeField] private float _moveRate = 4f;
-        [SerializeField] private bool _clientAuth = true;
+        Left,
+        Right,
+        Up,
+        Down
+    }
 
-        public Transform ObjectTransform;
+    public enum CameraMovement
+    {
+        Left,
+        Right,
+        Up,
+        Down,
+    }
+
+    public class PlayerController : MonoBehaviour
+    {
+        private Entity Entity;
+        private Rigidbody _rigidbody;
+        public Camera _camera;
+        private Transform _cameraTransform;
+        private Transform _cameraParent;
+        private Transform t;
+        public Transform PhysicalObject;
+        private PhysicalObject.PhysicalObject _container;
+
+        public float speed = 30;
+        public float cameraSpeed = 120;
 
 
+        private readonly DirectionalInput MoveInput = new();
+        private readonly DirectionalInput CameraInput = new();
+
+        private float _pitch;
+        private float _yaw;
+
+
+        // Start is called before the first frame update
+        private void Awake()
+        {
+            MoveInput.Horizontal = "Horizontal";
+            MoveInput.Vertical = "Vertical";
+            CameraInput.Horizontal = "Look X";
+            CameraInput.Vertical = "Look Y";
+        }
+
+        public void Initialize()
+        {
+            t = PhysicalObject.transform;
+            _container = PhysicalObject.GetComponent<PhysicalObject.PhysicalObject>();
+            _rigidbody = PhysicalObject.GetComponent<Rigidbody>();
+            _camera = _container.Camera;
+            _cameraTransform = _camera.transform;
+            _cameraParent = _container.CameraHolder;
+            _cameraTransform.localPosition = new Vector3(0, 2, -10);
+            _cameraTransform.rotation = Quaternion.identity;
+        }
+
+        // Update is called once per frame
         private void Update()
         {
-            if (!IsOwner || ObjectTransform == null || _camera == null)
-                return;
-            float hor = Input.GetAxisRaw("Horizontal");
-            float ver = Input.GetAxisRaw("Vertical");
+            if (_camera == null) return;
 
-            /* If ground cannot be found for 20 units then bump up 3 units. 
-             * This is just to keep player on ground if they fall through
-             * when changing scenes.             */
-            if (_clientAuth || (!_clientAuth && base.IsServer))
+            MoveInput.Update();
+            CameraInput.Update();
+            if (_rigidbody == null) return;
+            UpdateMovement();
+        }
+
+        private float attackCount;
+
+        private void LateUpdate()
+        {
+            if (_camera == null) return;
+            UpdateCamera();
+        }
+
+
+        private void UpdateCamera()
+        {
+            if (!Input.GetMouseButton((int)MouseButton.Right))
             {
-                if (!Physics.Linecast(ObjectTransform.position + new Vector3(0f, 0.3f, 0f),
-                        ObjectTransform.position - (Vector3.one * 20f)))
-                    ObjectTransform.position += new Vector3(0f, 3f, 0f);
+                if (!Cursor.visible && Cursor.lockState == CursorLockMode.Locked)
+                {
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+            }
+            else
+            {
+                if (Cursor.visible && Cursor.lockState != CursorLockMode.Locked)
+                {
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
             }
 
-            if (_clientAuth)
-                Move(hor, ver);
-            else
-                ServerMove(hor, ver);
+            var cameraVector = CameraInput.DirectionVector;
+
+            _yaw += cameraVector.x * cameraSpeed * Time.deltaTime;
+            _pitch -= cameraVector.y * cameraSpeed * Time.deltaTime;
+            _pitch = Mathf.Clamp(_pitch, 0, 60);
+            if (_yaw < -180)
+                _yaw += 360;
+            if (_yaw > 180)
+                _yaw -= 360;
+            _cameraParent.rotation = Quaternion.Slerp(_cameraParent.rotation, Quaternion.Euler(_pitch, _yaw, 0), 0.5f);
         }
 
-        [ServerRpc]
-        private void ServerMove(float hor, float ver)
+        private void UpdateMovement()
         {
-            Move(hor, ver);
-        }
-
-        private void Move(float hor, float ver)
-        {
-            float gravity = -10f * Time.deltaTime;
-            //If ray hits floor then cancel gravity.
-            Ray ray = new Ray(ObjectTransform.position + new Vector3(0f, 0.05f, 0f), -Vector3.up);
-            if (Physics.Raycast(ray, 0.1f + -gravity))
-                gravity = 0f;
-
-            /* Moving. */
-            Vector3 direction = new Vector3(
-                0f,
-                gravity,
-                ver * _moveRate * Time.deltaTime);
-
-            ObjectTransform.position += ObjectTransform.TransformDirection(direction);
-            ObjectTransform.Rotate(new Vector3(0f, hor * 100f * Time.deltaTime, 0f));
+            if (PhysicalObject != null)
+            {
+                var moveVector = MoveInput.ToMovementVector();
+                var forward = _cameraTransform.forward;
+                var right = _cameraTransform.right;
+                forward.y = 0f;
+                right.y = 0f;
+                forward.Normalize();
+                right.Normalize();
+                var desiredMoveDirection = forward * moveVector.z + right * moveVector.x;
+                _rigidbody.MovePosition(t.position + desiredMoveDirection * speed * Time.deltaTime);
+                if (desiredMoveDirection != Vector3.zero)
+                {
+                    _container.ObjectHolder.rotation = Quaternion.LookRotation(desiredMoveDirection, Vector3.up);
+                }
+            }
         }
     }
 }

@@ -14,21 +14,17 @@ namespace OpenFish.Plugins.PlayerControl
         private void SetControllerObject()
         {
             if (!IsOwner) return;
-            Controller.ObjectTransform = ObjectSystem.Object;
-            foreach (Transform child in ObjectSystem.Object)
-            {
-                var cam = child.GetComponent<Camera>();
-                if (cam == null) continue;
-                Controller._camera = cam.gameObject;
-                Controller._camera.SetActive(true);
-                break;
-            }
+            Controller.PhysicalObject = ObjectSystem.Object;
+            Controller.enabled = true;
+            Controller.Initialize();
+            Controller._camera.gameObject.SetActive(true);
         }
 
         public override void OnEntityReady(bool asServer)
         {
             base.OnEntityReady(asServer);
             if (asServer || !IsOwner) return;
+            Controller.enabled = false;
             // We only do this on the client since the client is the only one that cares
             ObjectSystem = Entity.GetSystem<PhysicalObjectSystem>();
             if (ObjectSystem.Object)

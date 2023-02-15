@@ -89,8 +89,7 @@ namespace OpenFish.Plugins.Entities
             Systems[system] = component;
             return component;
         }
-
-
+        
         public T AddSystem<T>(NetworkObject prefab)
             where T : EntitySystem
         {
@@ -100,6 +99,7 @@ namespace OpenFish.Plugins.Entities
             if (system == null) return null;
             var nob = NetworkManager.GetPooledInstantiated(prefab, true);
             var component = nob.GetComponent<T>();
+            if (component == null) return null;
             if (!RequiredSystems.Contains(component.GetSystemName()))
             {
                 // cancel the adding of the system, just destroy the instance
@@ -121,11 +121,12 @@ namespace OpenFish.Plugins.Entities
             return component;
         }
 
-        public void AddExistingSystem<T>(NetworkObject existingObject)
+        public T AddExistingSystem<T>(GameObject existingObject)
             where T : EntitySystem
         {
             var system = typeof(T).AssemblyQualifiedName;
-            if (system == null) return;
+            if (system == null) return null;
+            
             var component = existingObject.GetComponent<T>();
             component.Entity = this;
             component.enabled = false;
@@ -135,8 +136,10 @@ namespace OpenFish.Plugins.Entities
             LoadedSystems.Add(component.GetSystemName().ToLower());
             OnReady += component.OnEntityReady;
             var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
+            Debug.Log(count);
             if (count >= RequiredSystems.Count)
                 Ready = true;
+            return component;
         }
         
         /**

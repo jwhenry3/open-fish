@@ -24,6 +24,7 @@ namespace OpenFish.Plugins.Pet
             if (!IsServer) return;
             if (t != null && Object != null)
             {
+                if (Object.gameObject == gameObject) return;
                 tick += Time.deltaTime;
                 if (!(tick > 1)) return;
                 t.position = Object.transform.position;

@@ -36,7 +36,10 @@ namespace OpenFish.Plugins.Entities
         protected virtual void AddSystem(Entity entity, bool asServer)
         {
             if (!IsServer || !asServer) return;
-            System = entity.AddSystem<T>(Prefab);
+            if (entity.GetComponent<T>() != null)
+                System = entity.AddExistingSystem<T>(entity.gameObject);
+            else
+                System = entity.AddSystem<T>(Prefab);
             if (System != null)
                 EntitySystems[entity.EntityId] = System.gameObject;
         }
