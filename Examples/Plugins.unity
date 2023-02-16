@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 306400667}
   - component: {fileID: 306400666}
   - component: {fileID: 306400670}
+  - component: {fileID: 306400671}
   m_Layer: 0
   m_Name: PreconfiguredEntity
   m_TagString: Untagged
@@ -183,6 +184,7 @@ MonoBehaviour:
   - {fileID: 306400668}
   - {fileID: 306400666}
   - {fileID: 306400670}
+  - {fileID: 306400671}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -253,6 +255,24 @@ MonoBehaviour:
   WanderRadius: 10
   Chases: 0
   ChaseDistance: 10
+--- !u!114 &306400671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306400665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dacf2b5451417bb7131fc49d4e47bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 306400667}
+  _networkObjectCache: {fileID: 306400667}
+  Entity: {fileID: 306400668}
+  MaxHealth: 100
+  CurrentHealth: 100
 --- !u!1001 &539803258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -288,6 +308,10 @@ PrefabInstance:
       propertyPath: _sceneNetworkObjects.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6598437999013009924, guid: e7803152e94fb474c8b03e8dcc6f9f6b, type: 3}
+      propertyPath: Spawns.Array.data[0]
+      value: 
+      objectReference: {fileID: 1405529091}
     - target: {fileID: 6904347351633026885, guid: e7803152e94fb474c8b03e8dcc6f9f6b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -625,4 +649,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1405529090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1405529091}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1405529091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405529090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

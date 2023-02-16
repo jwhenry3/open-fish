@@ -12,5 +12,6 @@ namespace OpenFish.Plugins.Pet
         [SyncObject] public readonly SyncList<string> Members = new();
         [SyncObject] public readonly SyncList<string> Invites = new();
         [SyncObject] public readonly SyncList<string> JoinRequests = new();
+
     }
 }

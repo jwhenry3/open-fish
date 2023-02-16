@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FishNet.Object;
 using TriInspector;
+using UnityEngine;
 
 namespace OpenFish.Plugins.Entities
 {
@@ -9,17 +9,22 @@ namespace OpenFish.Plugins.Entities
     [DeclareBoxGroup("derived", Title = "Derived")]
     public class EntitySystem : NetworkBehaviour
     {
-        [Group("manual")]
-        public Entity Entity;
-        
-        
+        [Group("manual")] public Entity Entity;
+
+
+
         public virtual string GetSystemName()
         {
             return "undefined";
         }
+
         public virtual void OnEntityReady(bool asServer)
         {
             enabled = true;
+            if (Entity.gameObject != gameObject && asServer)
+            {
+                transform.position = Vector3.up * 10000;
+            } 
         }
 
         protected virtual void OnDestroy()

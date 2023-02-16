@@ -43,9 +43,11 @@ namespace OpenFish.Plugins.PhysicalObject
                 TypeConfig = PhysicalObjectConfigRepo.TypeConfigs[Entity.EntityType];
                 Name = TypeConfig.Name;
                 prefab = TypeConfig.Prefab;
-                useSpawnPosition = TypeConfig.UseSpawnPosition;
                 if (TypeConfig.UseSpawnPosition)
+                {
+                    useSpawnPosition = true;
                     position = TypeConfig.SpawnPosition;
+                }
             }
 
             if (PhysicalObjectConfigRepo.IdConfigs.ContainsKey(Entity.EntityId))
@@ -55,9 +57,11 @@ namespace OpenFish.Plugins.PhysicalObject
                 
                 if (IdConfig.Prefab != null)
                     prefab = IdConfig.Prefab;
-                useSpawnPosition = IdConfig.UseSpawnPosition || useSpawnPosition;
                 if (IdConfig.UseSpawnPosition)
+                {
+                    useSpawnPosition = true;
                     position = IdConfig.SpawnPosition;
+                }
             }
 
             if (Prefab != null)
@@ -67,7 +71,7 @@ namespace OpenFish.Plugins.PhysicalObject
             var instance = NetworkManager.GetPooledInstantiated(prefab, true);
             Object = instance.transform;
             Object.parent = t.parent;
-            Object.position = useSpawnPosition ? position : Entity.transform.position;
+            Object.position = useSpawnPosition ? position : Entity.OriginalPosition;
             instance.gameObject.name = Entity.EntityId + ":physical-object:instance";
             Spawn(instance, Owner);
             ObjectInstantiated?.Invoke();

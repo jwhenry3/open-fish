@@ -210,7 +210,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 18
+  <PrefabId>k__BackingField: 19
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   _overrideType: 3
   _updateHostVisibility: 1
   _observerConditions:
-  - {fileID: 11400000, guid: 5f33eb0e5b83b5546822cfe42a305657, type: 2}
+  - {fileID: 11400000, guid: 8eafda20e5096a846843e63c98fdf3ce, type: 2}
 --- !u!54 &8321917232744453398
 Rigidbody:
   m_ObjectHideFlags: 0

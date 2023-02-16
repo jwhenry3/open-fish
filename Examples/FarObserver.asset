@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b87bdf9dce4422e8039e0b1f6830a9e, type: 3}
-  m_Name: NPC_Entity
+  m_Script: {fileID: 11500000, guid: 7c3e28fa2e37d1d41b4f63c8a0cc2553, type: 3}
+  m_Name: FarObserver
   m_EditorClassIdentifier: 
-  EntityId: 
-  EntityType: npc
-  RequiredSystems:
-  - physical-object
-  - ai
+  NetworkObject: {fileID: 0}
+  _maximumDistance: 100
+  _hideDistancePercent: 0.1
+  _updateFrequency: 0

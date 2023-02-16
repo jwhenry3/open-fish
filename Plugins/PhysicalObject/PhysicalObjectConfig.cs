@@ -1,27 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using FishNet.Object;
+using OpenFish.Plugins.Entities;
 using UnityEngine;
 
 namespace OpenFish.Plugins.PhysicalObject
 {
     [CreateAssetMenu(fileName = "PhysicalObjectConfig", menuName = "OpenFish/PhysicalObject")]
     [Serializable]
-    public class PhysicalObjectConfig : ScriptableObject
+    public class PhysicalObjectConfig : EntitySystemConfig
     {
-        public string EntityId;
-        public string EntityType;
         public string Name;
         public NetworkObject Prefab;
         public bool UseSpawnPosition;
         public Vector3 SpawnPosition;
 
-        public void Store(Dictionary<string,PhysicalObjectConfig> IdConfigs, Dictionary<string,PhysicalObjectConfig> TypeConfigs)
-        {
-            if (!String.IsNullOrEmpty(EntityId))
-                IdConfigs[EntityId] = this;
-            if (!String.IsNullOrEmpty(EntityType))
-                TypeConfigs[EntityType] = this;
-        }
     }
 }

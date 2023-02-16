@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 42602576657857773}
   - component: {fileID: 3496777392811425497}
   - component: {fileID: 6673150946026864247}
+  - component: {fileID: 8616000441516500348}
+  - component: {fileID: 2847067893898020093}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -55,6 +57,7 @@ MonoBehaviour:
   Ready: 0
   EntityId: 
   EntityType: player
+  OriginalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &42602576657857775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +77,8 @@ MonoBehaviour:
   - {fileID: 42602576657857768}
   - {fileID: 42602576657857774}
   - {fileID: 42602576657857773}
-  - {fileID: 0}
+  - {fileID: 3496777392811425497}
+  - {fileID: 8616000441516500348}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -139,9 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018714e51a6a4e0ba23266f3b1911ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 42602576657857775}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 42602576657857775}
   Entity: {fileID: 42602576657857768}
   ObjectSystem: {fileID: 42602576657857773}
   Controller: {fileID: 6673150946026864247}
@@ -157,7 +161,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6dd4f576fd44839184fdab41cb79e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
+  Camera: {fileID: 0}
   PhysicalObject: {fileID: 0}
   speed: 30
   cameraSpeed: 120
+--- !u!114 &8616000441516500348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42602576657857772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dacf2b5451417bb7131fc49d4e47bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 4
+  _addedNetworkObject: {fileID: 42602576657857775}
+  _networkObjectCache: {fileID: 42602576657857775}
+  Entity: {fileID: 42602576657857768}
+  MaxHealth: 100
+  CurrentHealth: 100
+--- !u!114 &2847067893898020093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42602576657857772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overrideType: 3
+  _updateHostVisibility: 1
+  _observerConditions:
+  - {fileID: 11400000, guid: 8eafda20e5096a846843e63c98fdf3ce, type: 2}

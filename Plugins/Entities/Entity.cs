@@ -17,6 +17,8 @@ namespace OpenFish.Plugins.Entities
         [SyncVar] public string EntityId;
         public string EntityType;
 
+        public Vector3 OriginalPosition;
+
         public List<string> RequiredSystems => GetRequiredSystems();
         private List<string> _requiredSystems;
         public readonly List<string> LoadedSystems = new();
@@ -46,15 +48,17 @@ namespace OpenFish.Plugins.Entities
         
         private void AddEntityOnLoad(EntityManager manager)
         {
-            Debug.Log("Add entity!");
             manager.AddEntity(this);
         }
 
         public override void OnStartNetwork()
         {
             base.OnStartNetwork();
-            transform.position = Vector3.up * 5000;
             EntityManager.Loaded += AddEntityOnLoad;
+            var t = transform;
+            OriginalPosition = t.position;
+            // move the entity out of the way so it does not impact observers
+            t.position = Vector3.up * 10000;
             var instance = NetworkManager.GetInstance<EntityManager>();
             if (instance != null)
                 instance.AddEntity(this);
@@ -71,7 +75,7 @@ namespace OpenFish.Plugins.Entities
 
         public void OnDestroy()
         {
-            if (NetworkManager.GetInstance<EntityManager>())
+            if (EntityManager.Registered)
                 NetworkManager.GetInstance<EntityManager>().RemoveEntity(this);
             
             EntityManager.Loaded -= AddEntityOnLoad;
@@ -136,7 +140,6 @@ namespace OpenFish.Plugins.Entities
             LoadedSystems.Add(component.GetSystemName().ToLower());
             OnReady += component.OnEntityReady;
             var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
-            Debug.Log(count);
             if (count >= RequiredSystems.Count)
                 Ready = true;
             return component;

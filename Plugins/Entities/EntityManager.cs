@@ -14,12 +14,13 @@ namespace OpenFish.Plugins.Entities
         
         [SerializeField] private List<Entity> EntityList;
         public readonly Dictionary<string, Entity> Entities = new();
-
+        public static bool Registered = false;
 
         public override void OnStartNetwork()
         {
             base.OnStartNetwork();
             base.NetworkManager.RegisterInstance(this);
+            Registered = true;
             Loaded?.Invoke(this);
         }
 
