@@ -13,17 +13,12 @@ namespace OpenFish.Plugins.PhysicalObject
         public override string GetSystemName() => "physical-object";
 
         public event Action ObjectInstantiated;
-        [Group("manual")]
-        [SyncVar] public string Name;
-        [Group("manual")]
-        public NetworkObject Prefab;
-        [Group("derived")]
-        public PhysicalObjectConfig TypeConfig;
-        [Group("derived")]
-        public PhysicalObjectConfig IdConfig;
+        [Group("manual")] [SyncVar] public string Name;
+        [Group("manual")] public NetworkObject Prefab;
+        [Group("manual")] public PhysicalObjectConfig TypeConfig;
+        [Group("manual")] public PhysicalObjectConfig IdConfig;
 
-        [HideInInspector]
-        public Transform Object;
+        [HideInInspector] public Transform Object;
         private Transform t;
 
         private void Awake()
@@ -38,9 +33,14 @@ namespace OpenFish.Plugins.PhysicalObject
             NetworkObject prefab = null;
             bool useSpawnPosition = false;
             Vector3 position = Vector3.zero;
-            if (PhysicalObjectConfigRepo.TypeConfigs.ContainsKey(Entity.EntityType))
-            {
+            if (TypeConfig == null && PhysicalObjectConfigRepo.TypeConfigs.ContainsKey(Entity.EntityType))
                 TypeConfig = PhysicalObjectConfigRepo.TypeConfigs[Entity.EntityType];
+
+            if (IdConfig == null && PhysicalObjectConfigRepo.IdConfigs.ContainsKey(Entity.EntityId))
+                IdConfig = PhysicalObjectConfigRepo.IdConfigs[Entity.EntityId];
+
+            if (TypeConfig != null)
+            {
                 Name = TypeConfig.Name;
                 prefab = TypeConfig.Prefab;
                 if (TypeConfig.UseSpawnPosition)
@@ -50,11 +50,10 @@ namespace OpenFish.Plugins.PhysicalObject
                 }
             }
 
-            if (PhysicalObjectConfigRepo.IdConfigs.ContainsKey(Entity.EntityId))
+            if (IdConfig != null)
             {
-                IdConfig = PhysicalObjectConfigRepo.IdConfigs[Entity.EntityId];
                 Name = IdConfig.Name;
-                
+
                 if (IdConfig.Prefab != null)
                     prefab = IdConfig.Prefab;
                 if (IdConfig.UseSpawnPosition)
@@ -76,8 +75,9 @@ namespace OpenFish.Plugins.PhysicalObject
             Spawn(instance, Owner);
             ObjectInstantiated?.Invoke();
         }
-        
+
         private float tick;
+
         private void Update()
         {
             if (t != null && Object != null)

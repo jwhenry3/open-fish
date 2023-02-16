@@ -10,6 +10,25 @@ namespace OpenFish.Plugins.Life
         public float MaxHealth = 100;
         [Group("manual")]
         public float CurrentHealth = 100;
+        
+        [Group("manual")] public LifeConfig TypeConfig;
+        [Group("manual")] public LifeConfig IdConfig;
 
+        public override void OnEntityReady(bool asServer)
+        {
+            base.OnEntityReady(asServer);
+            
+            if (TypeConfig == null && LifeConfigRepo.TypeConfigs.ContainsKey(Entity.EntityType))
+                TypeConfig = LifeConfigRepo.TypeConfigs[Entity.EntityType];
+
+            if (IdConfig == null && LifeConfigRepo.IdConfigs.ContainsKey(Entity.EntityId))
+                IdConfig = LifeConfigRepo.IdConfigs[Entity.EntityId];
+
+            if (TypeConfig != null)
+                MaxHealth = TypeConfig.MaxHealth;
+            if (IdConfig != null)
+                MaxHealth = IdConfig.MaxHealth;
+            CurrentHealth = MaxHealth;
+        }
     }
 }
