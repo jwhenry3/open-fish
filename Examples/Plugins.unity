@@ -216,8 +216,9 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 306400667}
   _networkObjectCache: {fileID: 306400667}
   Ready: 0
-  EntityId: npc-1
+  EntityId: npc_preconfigured
   EntityType: 
+  OriginalPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &306400669
 Transform:
   m_ObjectHideFlags: 0
@@ -445,6 +446,18 @@ PrefabInstance:
       propertyPath: <SceneId>k__BackingField
       value: 4089781638713042469
       objectReference: {fileID: 0}
+    - target: {fileID: 566473914858676127, guid: 42961efa215f1a74da2d2beda6261f23, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 566473914858676127, guid: 42961efa215f1a74da2d2beda6261f23, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 306400667}
+    - target: {fileID: 566473914858676127, guid: 42961efa215f1a74da2d2beda6261f23, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 637891733}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42961efa215f1a74da2d2beda6261f23, type: 3}
 --- !u!114 &637891733 stripped
