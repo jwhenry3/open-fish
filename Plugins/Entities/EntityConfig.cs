@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OpenFish.Plugins.Entities
 {
-    [CreateAssetMenu(fileName = "EntityConfig", menuName = "OpenFish/Entity")]
+    [CreateAssetMenu(fileName = "EntityConfig", menuName = "OpenFish/Entity/Config")]
     [Serializable]
     public class EntityConfig : EntitySystemConfig
     {

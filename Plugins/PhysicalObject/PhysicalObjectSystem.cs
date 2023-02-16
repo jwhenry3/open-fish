@@ -33,6 +33,7 @@ namespace OpenFish.Plugins.PhysicalObject
             NetworkObject prefab = null;
             bool useSpawnPosition = false;
             Vector3 position = Vector3.zero;
+            Debug.Log("On Entity Ready!");
             if (TypeConfig == null && PhysicalObjectConfigRepo.TypeConfigs.ContainsKey(Entity.EntityType))
                 TypeConfig = PhysicalObjectConfigRepo.TypeConfigs[Entity.EntityType];
 

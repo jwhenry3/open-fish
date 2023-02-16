@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6457152591763642599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 129.80873, y: 369.35242, z: 80.04132}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51,6 +51,9 @@ MonoBehaviour:
   Entity: {fileID: 0}
   MaxHealth: 100
   CurrentHealth: 100
+  PerLevel: 10
+  TypeConfig: {fileID: 0}
+  IdConfig: {fileID: 0}
 --- !u!114 &6457152591763642596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,9 +78,9 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 0
+  <PrefabId>k__BackingField: 16
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 952226491
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 12016188345764427032
   _sceneNetworkObjects:

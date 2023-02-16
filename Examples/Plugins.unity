@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 306400666}
   - component: {fileID: 306400670}
   - component: {fileID: 306400671}
+  - component: {fileID: 306400672}
   m_Layer: 0
   m_Name: PreconfiguredEntity
   m_TagString: Untagged
@@ -185,6 +186,7 @@ MonoBehaviour:
   - {fileID: 306400666}
   - {fileID: 306400670}
   - {fileID: 306400671}
+  - {fileID: 306400672}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -274,6 +276,26 @@ MonoBehaviour:
   Entity: {fileID: 306400668}
   MaxHealth: 100
   CurrentHealth: 100
+  PerLevel: 10
+  TypeConfig: {fileID: 0}
+  IdConfig: {fileID: 0}
+--- !u!114 &306400672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306400665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35966bdcddb848e08f2a264520431c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 4
+  _addedNetworkObject: {fileID: 306400667}
+  _networkObjectCache: {fileID: 306400667}
+  Entity: {fileID: 306400668}
+  Level: 1
 --- !u!1001 &539803258
 PrefabInstance:
   m_ObjectHideFlags: 0

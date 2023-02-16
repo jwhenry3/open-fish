@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OpenFish.Plugins.AI
 {
-    [CreateAssetMenu(fileName = "AIConfig", menuName = "OpenFish/AI")]
+    [CreateAssetMenu(fileName = "AIConfig", menuName = "OpenFish/AI/Config")]
     [Serializable]
     public class AIConfig : EntitySystemConfig
     {

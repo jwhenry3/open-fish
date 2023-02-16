@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace OpenFish.Plugins.PhysicalObject
 {
-    [CreateAssetMenu(fileName = "PhysicalObjectConfig", menuName = "OpenFish/PhysicalObject")]
+    [CreateAssetMenu(fileName = "PhysicalObjectConfig", menuName = "OpenFish/PhysicalObject/Config")]
     [Serializable]
     public class PhysicalObjectConfig : EntitySystemConfig
     {

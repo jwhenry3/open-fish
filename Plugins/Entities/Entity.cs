@@ -112,14 +112,16 @@ namespace OpenFish.Plugins.Entities
             }
             var t = nob.transform;
             t.localPosition = Vector3.zero;
+            OnReady += component.OnEntityReady;
+            if (component.GetSystemName() == "undefined")
+                throw new Exception("Undefined System Name for " + component.name);
             component.Entity = this;
             component.enabled = false;
             component.gameObject.name = EntityId + ":" + component.GetSystemName();
             Systems[system] = component;
-            Spawn(nob, Owner);
             LoadedSystems.Add(component.GetSystemName().ToLower());
-            OnReady += component.OnEntityReady;
             var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
+            Spawn(nob, Owner);
             if (count >= RequiredSystems.Count)
                 Ready = true;
             return component;
@@ -130,16 +132,22 @@ namespace OpenFish.Plugins.Entities
         {
             var system = typeof(T).AssemblyQualifiedName;
             if (system == null) return null;
-            
             var component = existingObject.GetComponent<T>();
             component.Entity = this;
             component.enabled = false;
+            if (component.GetSystemName() == "undefined")
+                throw new Exception("Undefined System Name for " + component.name);
             if (component.gameObject != gameObject)
                 component.gameObject.name = EntityId + ":" + component.GetSystemName();
             Systems[system] = component;
             LoadedSystems.Add(component.GetSystemName().ToLower());
             OnReady += component.OnEntityReady;
             var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
+            Debug.Log("Loaded systems:");
+            foreach (var loaded in LoadedSystems)
+            {
+                Debug.Log(loaded);
+            }
             if (count >= RequiredSystems.Count)
                 Ready = true;
             return component;

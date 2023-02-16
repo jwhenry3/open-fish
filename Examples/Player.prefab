@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 42602576657857769}
+  - component: {fileID: 2847067893898020093}
   - component: {fileID: 42602576657857768}
   - component: {fileID: 42602576657857775}
   - component: {fileID: 42602576657857774}
@@ -16,7 +17,7 @@ GameObject:
   - component: {fileID: 3496777392811425497}
   - component: {fileID: 6673150946026864247}
   - component: {fileID: 8616000441516500348}
-  - component: {fileID: 2847067893898020093}
+  - component: {fileID: 3028591207659156074}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -39,6 +40,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2847067893898020093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42602576657857772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _overrideType: 3
+  _updateHostVisibility: 1
+  _observerConditions:
+  - {fileID: 11400000, guid: 8eafda20e5096a846843e63c98fdf3ce, type: 2}
 --- !u!114 &42602576657857768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +96,7 @@ MonoBehaviour:
   - {fileID: 42602576657857773}
   - {fileID: 3496777392811425497}
   - {fileID: 8616000441516500348}
+  - {fileID: 3028591207659156074}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -127,7 +145,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 42602576657857775}
   Entity: {fileID: 42602576657857768}
   Name: 
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 720745788891125426, guid: 5f6a9d8320e01bd45ad92bc40764cf42, type: 3}
   TypeConfig: {fileID: 0}
   IdConfig: {fileID: 0}
   Object: {fileID: 0}
@@ -183,7 +201,10 @@ MonoBehaviour:
   Entity: {fileID: 42602576657857768}
   MaxHealth: 100
   CurrentHealth: 100
---- !u!114 &2847067893898020093
+  PerLevel: 10
+  TypeConfig: {fileID: 0}
+  IdConfig: {fileID: 0}
+--- !u!114 &3028591207659156074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,10 +213,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 42602576657857772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
+  m_Script: {fileID: 11500000, guid: 35966bdcddb848e08f2a264520431c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _overrideType: 3
-  _updateHostVisibility: 1
-  _observerConditions:
-  - {fileID: 11400000, guid: 8eafda20e5096a846843e63c98fdf3ce, type: 2}
+  _componentIndexCache: 5
+  _addedNetworkObject: {fileID: 42602576657857775}
+  _networkObjectCache: {fileID: 42602576657857775}
+  Entity: {fileID: 42602576657857768}
+  Level: 1

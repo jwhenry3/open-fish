@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b87bdf9dce4422e8039e0b1f6830a9e, type: 3}
-  m_Name: Player_Entity
+  m_Script: {fileID: 11500000, guid: 3df57fe557ed4d9da713f0badb593b6b, type: 3}
+  m_Name: NPC_Level
   m_EditorClassIdentifier: 
   EntityId: 
-  EntityType: player
-  RequiredSystems:
-  - physical-object
-  - party
-  - pet-owner
-  - player-control
-  - life
-  - level
+  EntityType: npc
+  Level: 3
