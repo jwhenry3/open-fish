@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace OpenFish.Plugins.PhysicalObject
 {
-    [DeclareBoxGroup("derived", Title = "Derived")]
     public class PhysicalObjectSystem : EntitySystem
     {
         public override string GetSystemName() => "physical-object";
@@ -68,7 +67,7 @@ namespace OpenFish.Plugins.PhysicalObject
             var instance = NetworkManager.GetPooledInstantiated(prefab, true);
             Object = instance.transform;
             Object.parent = t.parent;
-            Object.position = useSpawnPosition ? position : transform.position;
+            Object.position = useSpawnPosition ? position : Entity.transform.position;
             instance.gameObject.name = Entity.EntityId + ":physical-object:instance";
             Spawn(instance, Owner);
             ObjectInstantiated?.Invoke();

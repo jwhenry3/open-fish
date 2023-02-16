@@ -22,7 +22,7 @@ namespace OpenFish.Plugins.PlayerControl
         Down,
     }
 
-    [DeclareBoxGroup("manual", Title = "Can Manually Set")]
+    [DeclareBoxGroup("manual", Title = "Configurable")]
     public class PlayerController : MonoBehaviour
     {
         private Entity Entity;

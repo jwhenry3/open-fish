@@ -11,8 +11,8 @@ namespace OpenFish.Plugins.AI
     {
         public string EntityId;
         public string EntityType;
-        public bool Wanders;
-        public bool Follows;
+        public bool Wanders = false;
+        public float WanderRadius = 10;
         
 
         public void Store(Dictionary<string, AIConfig> IdConfigs, Dictionary<string, AIConfig> TypeConfigs)

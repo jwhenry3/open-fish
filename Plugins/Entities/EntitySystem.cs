@@ -5,7 +5,8 @@ using TriInspector;
 
 namespace OpenFish.Plugins.Entities
 {
-    [DeclareBoxGroup("manual", Title = "Can Set Manually")]
+    [DeclareBoxGroup("manual", Title = "Configurable")]
+    [DeclareBoxGroup("derived", Title = "Derived")]
     public class EntitySystem : NetworkBehaviour
     {
         [Group("manual")]

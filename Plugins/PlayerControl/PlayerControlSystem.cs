@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace OpenFish.Plugins.PlayerControl
 {
-    [DeclareBoxGroup("manual", Title = "Can Manually Set")]
     public class PlayerControlSystem : EntitySystem
     {
         public override string GetSystemName() => "player-control";

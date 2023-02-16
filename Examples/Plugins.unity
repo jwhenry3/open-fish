@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 306400668}
   - component: {fileID: 306400667}
   - component: {fileID: 306400666}
+  - component: {fileID: 306400670}
   m_Layer: 0
   m_Name: PreconfiguredEntity
   m_TagString: Untagged
@@ -159,7 +160,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 306400667}
   Entity: {fileID: 306400668}
   Name: PreconfiguredEntity
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 720745788891125426, guid: 5f6a9d8320e01bd45ad92bc40764cf42, type: 3}
   TypeConfig: {fileID: 0}
   IdConfig: {fileID: 0}
   Object: {fileID: 0}
@@ -181,6 +182,7 @@ MonoBehaviour:
   _networkBehaviours:
   - {fileID: 306400668}
   - {fileID: 306400666}
+  - {fileID: 306400670}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -212,7 +214,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 306400667}
   _networkObjectCache: {fileID: 306400667}
   Ready: 0
-  EntityId: 
+  EntityId: npc-1
   EntityType: 
 --- !u!4 &306400669
 Transform:
@@ -222,13 +224,35 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306400665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 308.1253, y: -171.92288, z: 162.16714}
+  m_LocalPosition: {x: 10, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &306400670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306400665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727254c2064348ce80d141f87a3b0d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 2
+  _addedNetworkObject: {fileID: 306400667}
+  _networkObjectCache: {fileID: 306400667}
+  Entity: {fileID: 306400668}
+  TypeConfig: {fileID: 0}
+  IdConfig: {fileID: 0}
+  Wanders: 0
+  WanderRadius: 10
+  Chases: 0
+  ChaseDistance: 10
 --- !u!1001 &539803258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -339,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 566473914858676121, guid: 42961efa215f1a74da2d2beda6261f23, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 566473914858676121, guid: 42961efa215f1a74da2d2beda6261f23, type: 3}
       propertyPath: m_LocalPosition.z
