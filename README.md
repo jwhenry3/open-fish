@@ -14,7 +14,8 @@ as demands increase.
     - This will allow you to register your singleton systems with the PluginManager in a standardized way
 
 ### Entity System
-![Bare Entity Setup](https://raw.githubusercontent.com/jwhenry3/open-fish/master/Examples/Screenshots/Entity.PNG)
+![Bare Entity Prefab](https://raw.githubusercontent.com/jwhenry3/open-fish/master/Examples/Screenshots/Entity.PNG)
+![Bare Entity Config](https://raw.githubusercontent.com/jwhenry3/open-fish/master/Examples/Screenshots/EntityConfig.PNG)
 - Any objects that want to leverage the entity system must have the Entity component
 - Each entity can have either a Type config or an ID config, which is applied in that order
     - Type configs are applied first, and ID configs are applied after for overrides
