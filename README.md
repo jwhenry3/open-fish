@@ -3,6 +3,9 @@
 The purpose behind this project is to bring an ECS pattern to Unity without the risks of implementing DOTS
 and having compatibility issues. This will be considered an Open Source project for anyone to contribute to
 as demands increase.
+### Required Packages
+- [FishNet](https://github.com/FirstGearGames/FishNet)
+- [Tri Inspector](https://github.com/codewriter-packages/Tri-Inspector)
 
 ### Basic Usage
 
