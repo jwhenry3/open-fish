@@ -8,8 +8,7 @@ namespace OpenFish.Plugins.Level
     public class LevelSystem : EntitySystem
     {
         public override string GetSystemName() => "level";
-        [Group("manual")]  [SyncVar] public int Level = 1;
-        [Group("manual")]  [SyncVar] public float Experience = 0;
+        [Group("manual")]  [SyncVar] public float Level = 1;
         [Group("manual")] public LevelConfig TypeConfig;
         [Group("manual")] public LevelConfig IdConfig;
 

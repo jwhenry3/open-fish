@@ -8,6 +8,6 @@ namespace OpenFish.Plugins.Level
     [Serializable]
     public class LevelConfig : EntitySystemConfig
     {
-        public int Level = 1;
+        public float Level = 1;
     }
 }
