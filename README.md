@@ -43,6 +43,7 @@ as demands increase.
 - You can even add systems that are not required to the Entity object and so long as the Plugin is loaded, it can enhance the Entity
 - This method also has a performance benefit over dynamically adding systems since it does not require a Network Object per system
 - I prefer using this method when creating player based entities or scene entities that are less dynamic than mobs that can have varying behaviors
+
 ![Player Entity](https://raw.githubusercontent.com/jwhenry3/open-fish/master/Examples/Screenshots/Player.PNG)
 ### Troubleshooting Tips
 - If your entity is not spawning the physical object or your systems are showing up as disabled
