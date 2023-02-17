@@ -18,7 +18,7 @@ as demands increase.
 - Each entity can have either a Type config or an ID config, which is applied in that order
     - Type configs are applied first, and ID configs are applied after for overrides
 - EntityConfig is used to specify the required systems before the OnEntityReady fires
-  - This event provides a safe way to interact with other systems on an entity once all are available that are requires
+  - This event provides a safe way to interact with other systems on an entity once all are available that are required
 - There are 2 ways to create your entities
   - Provide a prefab with all the necessary systems attached to it
   - Provide a Type and/or Id so the EntityConfigs can be loaded and all required systems are added at runtime
