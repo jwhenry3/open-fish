@@ -41,7 +41,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6957818228877368689}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a6c811d140a43e8a214573005ffdda0, type: 3}
   m_Name: 
@@ -51,7 +51,8 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 5253640167783943515}
   Name: skill
   Description: 
-  Dependencies: []
+  Dependencies:
+  - entity
 --- !u!114 &5773592840664776720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +95,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 25
+  <PrefabId>k__BackingField: 10
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 952226491
   <SceneId>k__BackingField: 0

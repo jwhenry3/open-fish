@@ -19,7 +19,7 @@ namespace OpenFish.Plugins.Pet
             Object = Entity.GetSystem<PhysicalObjectSystem>().transform;
         }
 
-        private void Update()
+        protected override void Update()
         {
             if (!IsServer) return;
             if (t != null && Object != null)

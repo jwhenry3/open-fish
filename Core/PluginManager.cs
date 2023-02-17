@@ -18,7 +18,7 @@ namespace OpenFish.Core
         public override void OnStartServer()
         {
             base.OnStartServer();
-            
+
             foreach (Plugin plugin in PluginList)
             {
                 if (Plugins.ContainsKey(plugin.Name)) continue;
@@ -28,7 +28,11 @@ namespace OpenFish.Core
             }
 
             foreach (var kvp in Plugins)
+            {
                 kvp.Value.enabled = IsPluginReady(kvp.Key);
+                if (kvp.Value.enabled)
+                    kvp.Value.Enable();
+            }
         }
 
         private bool AreDependenciesRegistered(string pluginName, [CanBeNull] List<string> iterated = null)

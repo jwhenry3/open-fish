@@ -10,8 +10,9 @@ namespace OpenFish.Plugins.Skill
 
         public SkillConfigRepo Repo;
         
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             Instance = this;
             Instantiated?.Invoke(this);
         }

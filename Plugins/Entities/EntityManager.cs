@@ -8,36 +8,46 @@ namespace OpenFish.Plugins.Entities
     public class EntityManager : NetworkBehaviour
     {
         public static event Action<EntityManager> Loaded;
-        public event Action<Entity, bool> EntityAdded;
+        public static event Action<Entity, bool> EntityAdded;
 
         public EntityConfigRepo EntityConfigRepo;
         
-        [SerializeField] private List<Entity> EntityList;
-        public readonly Dictionary<string, Entity> Entities = new();
-        public static bool Registered = false;
+        private static List<Entity> EntityList = new();
+        public static Dictionary<string, Entity> Entities = new();
+        public static EntityManager Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
+        private void OnDestroy()
+        {
+            EntityList = new();
+            Entities = new();
+        }
 
         public override void OnStartNetwork()
         {
             base.OnStartNetwork();
             base.NetworkManager.RegisterInstance(this);
-            Registered = true;
             Loaded?.Invoke(this);
         }
 
-        public void AddEntity(Entity entity)
+        public static void AddEntity(Entity entity, bool asServer)
         {
             if (!EntityList.Contains(entity)) EntityList.Add(entity);
             Entities[entity.EntityId] = entity;
-            EntityAdded?.Invoke(entity, IsServer);
+            EntityAdded?.Invoke(entity, asServer);
         }
 
-        public void RemoveEntity(Entity entity)
+        public static void RemoveEntity(Entity entity)
         {
             if (EntityList.Contains(entity)) EntityList.Remove(entity);
             if (Entities.ContainsKey(entity.EntityId)) Entities.Remove(entity.EntityId);
         }
 
-        public Entity GetEntity(string entityId)
+        public static Entity GetEntity(string entityId)
         {
             if (!Entities.ContainsKey(entityId)) return null;
             return Entities[entityId];

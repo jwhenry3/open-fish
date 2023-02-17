@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FishNet.Object;
 using TriInspector;
 using UnityEngine;
@@ -11,7 +12,10 @@ namespace OpenFish.Plugins.Entities
     {
         [Group("manual")] public Entity Entity;
 
-
+        protected virtual void Update()
+        {
+            
+        }
 
         public virtual string GetSystemName()
         {

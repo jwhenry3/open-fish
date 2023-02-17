@@ -45,23 +45,18 @@ namespace OpenFish.Plugins.Entities
             _requiredSystems = systems;
             return systems;
         }
-        
-        private void AddEntityOnLoad(EntityManager manager)
-        {
-            manager.AddEntity(this);
-        }
 
         public override void OnStartNetwork()
         {
             base.OnStartNetwork();
-            EntityManager.Loaded += AddEntityOnLoad;
             var t = transform;
             OriginalPosition = t.position;
             // move the entity out of the way so it does not impact observers
             t.position = Vector3.up * 10000;
-            var instance = NetworkManager.GetInstance<EntityManager>();
-            if (instance != null)
-                instance.AddEntity(this);
+            // when the network starts, entities that are already in the scene
+            // may end up executing this before the manager is registered
+            // with the network manager
+            EntityManager.AddEntity(this, IsServer);
         }
 
         void OnReadyChange(bool previous, bool next, bool asServer)
@@ -75,10 +70,7 @@ namespace OpenFish.Plugins.Entities
 
         public void OnDestroy()
         {
-            if (EntityManager.Registered)
-                NetworkManager.GetInstance<EntityManager>().RemoveEntity(this);
-            
-            EntityManager.Loaded -= AddEntityOnLoad;
+            EntityManager.RemoveEntity(this);
         }
 
         public T GetSystem<T>() where T : EntitySystem

@@ -78,7 +78,7 @@ namespace OpenFish.Plugins.PhysicalObject
 
         private float tick;
 
-        private void Update()
+        protected override void Update()
         {
             if (t != null && Object != null)
             {

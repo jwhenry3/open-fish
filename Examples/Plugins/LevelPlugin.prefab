@@ -41,7 +41,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066866694093332942}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a6c811d140a43e8a214573005ffdda0, type: 3}
   m_Name: 
@@ -77,7 +77,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 17
+  <PrefabId>k__BackingField: 6
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0

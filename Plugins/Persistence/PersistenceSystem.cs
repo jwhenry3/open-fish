@@ -5,6 +5,7 @@ namespace OpenFish.Plugins.Persistence
 {
     public class PersistenceSystem : EntitySystem
     {
+        public override string GetSystemName() => "persistence";
         public PersistenceManager Manager => NetworkManager.GetInstance<PersistenceManager>();
         
         public bool Persist<T>(string collection, string entityId, T data)

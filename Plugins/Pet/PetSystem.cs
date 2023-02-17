@@ -9,11 +9,11 @@ namespace OpenFish.Plugins.Pet
     public class PetSystem : EntitySystem
     {
         public override string GetSystemName() => "pet";
-        [SyncVar]
-        public string OwnerEntityId;
+        [SyncVar] public string OwnerEntityId;
         private Transform Object;
         private Transform t;
         private float tick;
+
         public override void OnEntityReady(bool asServer)
         {
             base.OnEntityReady(asServer);
@@ -21,7 +21,7 @@ namespace OpenFish.Plugins.Pet
             Object = Entity.GetSystem<PhysicalObjectSystem>().transform;
         }
 
-        private void Update()
+        protected override void Update()
         {
             if (!IsServer) return;
             if (t != null && Object != null)
