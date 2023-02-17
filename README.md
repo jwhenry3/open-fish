@@ -35,11 +35,11 @@ as demands increase.
   - Either a component will be located on the entity or a GameObject will be instantiated from a prefab for the system
 - System: A system component is what is tied directly to a specific entity in order to control that entity's parameters and behavior
     - Multiple systems can exist on an entity for the same Plugin, and should often be grouped on the same prefab for optimization
-
+    - You can either leave it up to the Manager to load the configs for the entity or provide them manually in the entity prefab
 ### Preconfigured Entities
 ![Preconfigured Entity](https://raw.githubusercontent.com/jwhenry3/open-fish/master/Examples/Screenshots/PreconfiguredEntity.PNG)
-- Entities that have their systems added to the Entity object still require an EntityConfig to specify which systems are required
-  - This is so the OnEntityReady can fire in a standard way
+- Entities that have their systems added to the Entity object do not need an EntityConfig to define their behavior
+  - OnEntityReady will fire once the first system is loaded if no config is provided, so you may want to double check the state of the entity if doing things this way
 - You can even add systems that are not required to the Entity object and so long as the Plugin is loaded, it can enhance the Entity
 - This method also has a performance benefit over dynamically adding systems since it does not require a Network Object per system
 - I prefer using this method when creating player based entities or scene entities that are less dynamic than mobs that can have varying behaviors
