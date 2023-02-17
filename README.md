@@ -25,6 +25,8 @@ as demands increase.
   - Provide a prefab with all the necessary systems attached to it
   - Provide a Type and/or Id so the EntityConfigs can be loaded and all required systems are added at runtime
     - This method will cause slight overhead for each system that has to be added at runtime since they are GameObjects and not simple components
+
+
 ### System Pattern
 - Plugin: A Prefab with a Plugin component and Manager component should exist and registered with the PluginManager
   - Plugins will be loaded as global network objects and singletons to allow for server-wide access to anything needed
@@ -33,7 +35,15 @@ as demands increase.
   - Either a component will be located on the entity or a GameObject will be instantiated from a prefab for the system
 - System: A system component is what is tied directly to a specific entity in order to control that entity's parameters and behavior
     - Multiple systems can exist on an entity for the same Plugin, and should often be grouped on the same prefab for optimization
-  
+
+### Preconfigured Entities
+![Preconfigured Entity](https://raw.githubusercontent.com/jwhenry3/open-fish/master/Examples/Screenshots/PreconfiguredEntity.PNG)
+- Entities that have their systems added to the Entity object still require an EntityConfig to specify which systems are required
+  - This is so the OnEntityReady can fire in a standard way
+- You can even add systems that are not required to the Entity object and so long as the Plugin is loaded, it can enhance the Entity
+- This method also has a performance benefit over dynamically adding systems since it does not require a Network Object per system
+- I prefer using this method when creating player based entities or scene entities that are less dynamic than mobs that can have varying behaviors
+![Player Entity](https://raw.githubusercontent.com/jwhenry3/open-fish/master/Examples/Screenshots/Player.PNG)
 ### Troubleshooting Tips
 - If your entity is not spawning the physical object or your systems are showing up as disabled
   - This is a sign that not all systems were loaded that were required and OnEntityReady did not fire
