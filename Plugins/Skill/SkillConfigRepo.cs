@@ -9,16 +9,22 @@ namespace OpenFish.Plugins.Skill
     [Serializable]
     public class SkillConfigRepo : ScriptableObject
     {
+        public bool UseExamples;
         public Dictionary<string, SkillConfig> Skills;
         public Dictionary<string, List<SkillConfig>> SkillsByCategory;
 
         private void OnEnable()
         {
+            
             Skills = new();
             SkillsByCategory = new();
             foreach (var guid in AssetDatabase.FindAssets("t:SkillConfig"))
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
+                if (UseExamples && !path.Contains("OpenFish/Examples"))
+                    continue;
+                if (!UseExamples && path.Contains("OpenFish/Examples"))
+                    continue;
                 var asset = AssetDatabase.LoadAssetAtPath(path, typeof(SkillConfig)) as SkillConfig;
                 if (asset == null) continue;
                 if (!SkillsByCategory.ContainsKey(asset.Category))
