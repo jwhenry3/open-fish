@@ -63,6 +63,7 @@ MonoBehaviour:
   - {fileID: 8212510177971412154, guid: d052ff7e17fc4a043a8291437b0fb671, type: 3}
   - {fileID: 4880684045443493550, guid: 44323384c949de6418b34491bbac36b0, type: 3}
   - {fileID: 2843756181923627679, guid: bb4ca7a88ea591b49885e7eae9565bea, type: 3}
+  - {fileID: 3284687196923629516, guid: eadee343c5a686948a3aec061c20be96, type: 3}
 --- !u!114 &7133641650946133285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,10 +88,10 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 1
+  <PrefabId>k__BackingField: 14
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 11459541618623903410
+  <AssetPathHash>k__BackingField: 9363993812636317954
   _sceneNetworkObjects:
   - {fileID: 7133641650946133285}

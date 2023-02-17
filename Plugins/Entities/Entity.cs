@@ -143,11 +143,6 @@ namespace OpenFish.Plugins.Entities
             LoadedSystems.Add(component.GetSystemName().ToLower());
             OnReady += component.OnEntityReady;
             var count = RequiredSystems.Sum(systemName => LoadedSystems.Contains(systemName.ToLower()) ? 1 : 0);
-            Debug.Log("Loaded systems:");
-            foreach (var loaded in LoadedSystems)
-            {
-                Debug.Log(loaded);
-            }
             if (count >= RequiredSystems.Count)
                 Ready = true;
             return component;

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6673150946026864247}
   - component: {fileID: 8616000441516500348}
   - component: {fileID: 3028591207659156074}
+  - component: {fileID: 1001236389508700789}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -108,7 +109,7 @@ MonoBehaviour:
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 610643442381542076
+  <AssetPathHash>k__BackingField: 6867513468845363724
   _sceneNetworkObjects:
   - {fileID: 42602576657857775}
   - {fileID: 0}
@@ -221,3 +222,22 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 42602576657857775}
   Entity: {fileID: 42602576657857768}
   Level: 1
+  Experience: 0
+  TypeConfig: {fileID: 0}
+  IdConfig: {fileID: 0}
+--- !u!114 &1001236389508700789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42602576657857772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399359efd9a549e98a9d06e950b0735c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 42602576657857775}
+  _networkObjectCache: {fileID: 0}
+  Entity: {fileID: 42602576657857768}

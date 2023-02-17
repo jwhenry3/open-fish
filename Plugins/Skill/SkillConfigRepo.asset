@@ -9,16 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b87bdf9dce4422e8039e0b1f6830a9e, type: 3}
-  m_Name: Player_Entity
+  m_Script: {fileID: 11500000, guid: ff79f13804bd44538b9d50d50989ef64, type: 3}
+  m_Name: SkillConfigRepo
   m_EditorClassIdentifier: 
-  EntityId: 
-  EntityType: player
-  RequiredSystems:
-  - physical-object
-  - party
-  - pet-owner
-  - player-control
-  - life
-  - level
-  - skill
