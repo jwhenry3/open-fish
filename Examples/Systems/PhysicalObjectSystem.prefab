@@ -52,6 +52,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 6293942673535413327}
   Entity: {fileID: 0}
   Name: 
+  Prefab: {fileID: 0}
   TypeConfig: {fileID: 0}
   IdConfig: {fileID: 0}
   Object: {fileID: 0}
@@ -84,7 +85,7 @@ MonoBehaviour:
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 3337866442672699108
+  <AssetPathHash>k__BackingField: 7887196592714002591
   _sceneNetworkObjects:
   - {fileID: 6293942673535413327}
 --- !u!114 &1206748776898041039

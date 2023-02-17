@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b3a7cbaca54e88b49c1b77f2ed42d5, type: 3}
   m_Name: EntityConfigRepo
   m_EditorClassIdentifier: 
+  UseExamples: 1

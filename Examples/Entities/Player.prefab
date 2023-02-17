@@ -109,7 +109,7 @@ MonoBehaviour:
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 6867513468845363724
+  <AssetPathHash>k__BackingField: 11540624890798569048
   _sceneNetworkObjects:
   - {fileID: 42602576657857775}
   - {fileID: 0}
@@ -222,7 +222,6 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 42602576657857775}
   Entity: {fileID: 42602576657857768}
   Level: 1
-  Experience: 0
   TypeConfig: {fileID: 0}
   IdConfig: {fileID: 0}
 --- !u!114 &1001236389508700789

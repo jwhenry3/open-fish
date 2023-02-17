@@ -49,6 +49,12 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5602867601645566501}
   _networkObjectCache: {fileID: 5602867601645566501}
   Entity: {fileID: 0}
+  TypeConfig: {fileID: 0}
+  IdConfig: {fileID: 0}
+  Wanders: 0
+  WanderRadius: 10
+  Chases: 0
+  ChaseDistance: 10
 --- !u!114 &5602867601645566501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,11 +79,11 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 0
+  <PrefabId>k__BackingField: 33
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 952226491
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 17769228983384785184
+  <AssetPathHash>k__BackingField: 2075998150629845115
   _sceneNetworkObjects:
   - {fileID: 5602867601645566501}
   - {fileID: 0}

@@ -15,7 +15,6 @@ namespace OpenFish.Plugins.Skill
 
         private void OnEnable()
         {
-            
             Skills = new();
             SkillsByCategory = new();
             foreach (var guid in AssetDatabase.FindAssets("t:SkillConfig"))
@@ -32,7 +31,7 @@ namespace OpenFish.Plugins.Skill
                 Skills.Add(asset.Id, asset);
                 SkillsByCategory[asset.Category].Add(asset);
             }
-            Debug.Log("Found " + Skills.Count + " Configs for Skills");
+            Debug.Log("Found " + Skills.Count + " Config(s) for Skills");
         }
     }
 }

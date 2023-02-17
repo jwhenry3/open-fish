@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510605bcdcd34a47867e8a0aef6cd197, type: 3}
   m_Name: PhysicalObjectConfigRepo
   m_EditorClassIdentifier: 
+  UseExamples: 1

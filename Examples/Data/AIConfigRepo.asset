@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c536ed0b492843ada25f6cc896098d45, type: 3}
   m_Name: AIConfigRepo
   m_EditorClassIdentifier: 
+  UseExamples: 1

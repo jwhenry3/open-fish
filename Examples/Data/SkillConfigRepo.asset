@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff79f13804bd44538b9d50d50989ef64, type: 3}
   m_Name: SkillConfigRepo
   m_EditorClassIdentifier: 
+  UseExamples: 1

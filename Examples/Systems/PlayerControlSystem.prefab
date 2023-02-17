@@ -76,11 +76,11 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 0
+  <PrefabId>k__BackingField: 22
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 13372824887891565940
+  <AssetPathHash>k__BackingField: 13520429061777369769
   _sceneNetworkObjects:
   - {fileID: 7179234911548164468}
   - {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6dd4f576fd44839184fdab41cb79e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
+  Camera: {fileID: 0}
   PhysicalObject: {fileID: 0}
   speed: 30
   cameraSpeed: 120

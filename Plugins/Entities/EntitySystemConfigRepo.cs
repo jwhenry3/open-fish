@@ -8,6 +8,8 @@ namespace OpenFish.Plugins.Entities
     public class EntitySystemConfigRepo<T> : ScriptableObject
     where T : EntitySystemConfig
     {
+        
+        public bool UseExamples;
         public static Dictionary<string, T> IdConfigs;
         public static Dictionary<string, T> TypeConfigs;
 
@@ -20,14 +22,18 @@ namespace OpenFish.Plugins.Entities
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 var asset = AssetDatabase.LoadAssetAtPath(path, typeof(T)) as T;
+                if (UseExamples && !path.Contains("OpenFish/Examples"))
+                    continue;
+                if (!UseExamples && path.Contains("OpenFish/Examples"))
+                    continue;
                 if (asset == null) continue;
                 if (!String.IsNullOrEmpty(asset.EntityId))
                     IdConfigs[asset.EntityId] = asset;
                 if (!String.IsNullOrEmpty(asset.EntityType))
                     TypeConfigs[asset.EntityType] = asset;
             }
-            Debug.Log("Found " + TypeConfigs.Count + " TypeConfigs for " + configName);
-            Debug.Log("Found " + IdConfigs.Count + " IdConfigs for " + configName);
+            Debug.Log("Found " + TypeConfigs.Count + " TypeConfig(s) for " + configName);
+            Debug.Log("Found " + IdConfigs.Count + " IdConfig(s) for " + configName);
         }
         
     }

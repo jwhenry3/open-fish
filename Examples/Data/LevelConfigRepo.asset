@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c595bf21dabc4afd815cce7b49dc64fe, type: 3}
   m_Name: LevelConfigRepo
   m_EditorClassIdentifier: 
+  UseExamples: 1

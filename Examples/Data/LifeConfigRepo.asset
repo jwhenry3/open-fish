@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8330aba15642c3a21d8047fe576bb5, type: 3}
   m_Name: LifeConfigRepo
   m_EditorClassIdentifier: 
+  UseExamples: 1

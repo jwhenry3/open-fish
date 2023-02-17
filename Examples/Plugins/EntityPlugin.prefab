@@ -77,11 +77,11 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 5
+  <PrefabId>k__BackingField: 20
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 12551704682284645897
+  <AssetPathHash>k__BackingField: 16056904638024437283
   _sceneNetworkObjects:
   - {fileID: 6339804716151986286}
   - {fileID: 0}
