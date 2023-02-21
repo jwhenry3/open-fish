@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using OpenFish.Plugins.Entities;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ namespace OpenFish.Plugins.Interactable
 {
     public class InteractableSystem : EntitySystem
     {
-        public static List<InteractableSystem> Interactables = new();
+        public static readonly List<InteractableSystem> Interactables = new();
         public static List<InteractableSystem> Sorted = new();
         public bool CanInteract;
         public Transform Canvas;

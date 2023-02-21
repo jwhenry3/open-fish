@@ -9,7 +9,6 @@ namespace OpenFish.Plugins.Entities
     public class EntitySystemManager<T> : NetworkBehaviour where T : EntitySystem
     {
         private Plugin plugin;
-        public NetworkObject Prefab;
         protected T System;
         protected readonly Dictionary<string, GameObject> EntitySystems = new();
 
@@ -50,8 +49,6 @@ namespace OpenFish.Plugins.Entities
             if (!IsServer || !asServer) return;
             if (entity.GetComponent<T>() != null)
                 System = entity.AddExistingSystem<T>(entity.gameObject);
-            else
-                System = entity.AddSystem<T>(Prefab);
             if (System != null)
                 EntitySystems[entity.EntityId] = System.gameObject;
         }
