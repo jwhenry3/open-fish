@@ -63,11 +63,21 @@ namespace OpenFish.Plugins.PlayerControl
             t = PhysicalObject.transform;
             _container = PhysicalObject.GetComponent<PhysicalObject.PhysicalObject>();
             _rigidbody = PhysicalObject.GetComponent<Rigidbody>();
-            Camera = _container.Camera;
-            _cameraTransform = Camera.transform;
-            _cameraParent = _container.CameraHolder;
-            _cameraTransform.localPosition = new Vector3(0, 2, -10);
-            _cameraTransform.rotation = Quaternion.identity;
+            SetCamera();
+        }
+
+        private void SetCamera()
+        {
+            Camera = Camera.main;
+            if (Camera != null)
+            {
+                _container.Camera = Camera;
+                _cameraTransform = Camera.transform;
+                _cameraParent = _container.CameraHolder;
+                _cameraTransform.parent = _cameraParent;
+                _cameraTransform.localPosition = new Vector3(0, 2, -10);
+                _cameraTransform.rotation = Quaternion.identity;
+            }
         }
 
         // Update is called once per frame
@@ -92,6 +102,8 @@ namespace OpenFish.Plugins.PlayerControl
 
         private void UpdateCamera()
         {
+            if (Camera == null)
+                SetCamera();
             if (!Input.GetMouseButton((int)MouseButton.Right))
             {
                 if (!Cursor.visible && Cursor.lockState == CursorLockMode.Locked)
