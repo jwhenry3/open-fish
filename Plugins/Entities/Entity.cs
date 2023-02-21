@@ -9,20 +9,22 @@ namespace OpenFish.Plugins.Entities
 {
     public class Entity : NetworkBehaviour
     {
+        public static Entity LocalPlayer;
         public event Action<bool> OnReady;
 
         [SyncVar(OnChange = nameof(OnReadyChange))]
         public bool Ready;
 
+        public bool MoveOutOfTheWay = true;
         [SyncVar] public string EntityId;
         public string EntityType;
 
         public Vector3 OriginalPosition;
 
-        public List<string> RequiredSystems => GetRequiredSystems();
+        private List<string> RequiredSystems => GetRequiredSystems();
         private List<string> _requiredSystems;
-        public readonly List<string> LoadedSystems = new();
-        public readonly Dictionary<string, EntitySystem> Systems = new();
+        private readonly List<string> LoadedSystems = new();
+        private readonly Dictionary<string, EntitySystem> Systems = new();
 
         private List<string> GetRequiredSystems()
         {
@@ -51,12 +53,18 @@ namespace OpenFish.Plugins.Entities
             base.OnStartNetwork();
             var t = transform;
             OriginalPosition = t.position;
-            // move the entity out of the way so it does not impact observers
-            t.position = Vector3.up * 10000;
+            if (MoveOutOfTheWay)
+            {
+                // move the entity out of the way so it does not impact observers
+                t.position = Vector3.up * 10000;
+            }
+
             // when the network starts, entities that are already in the scene
             // may end up executing this before the manager is registered
             // with the network manager
             EntityManager.AddEntity(this, IsServer);
+            if (Owner.IsLocalClient)
+                LocalPlayer = this;
         }
 
         void OnReadyChange(bool previous, bool next, bool asServer)
@@ -85,7 +93,7 @@ namespace OpenFish.Plugins.Entities
             Systems[system] = component;
             return component;
         }
-        
+
         public T AddSystem<T>(NetworkObject prefab)
             where T : EntitySystem
         {
@@ -102,6 +110,7 @@ namespace OpenFish.Plugins.Entities
                 Destroy(nob.gameObject);
                 return null;
             }
+
             var t = nob.transform;
             t.localPosition = Vector3.zero;
             OnReady += component.OnEntityReady;
@@ -139,7 +148,7 @@ namespace OpenFish.Plugins.Entities
                 Ready = true;
             return component;
         }
-        
+
         /**
          * Use this method when moving an entity between scenes in FishNet
          * so you can make sure all systems along with the entity are sent to the new scene

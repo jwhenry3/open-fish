@@ -15,6 +15,7 @@ namespace OpenFish.Plugins.Entities
         private static List<Entity> EntityList = new();
         public static Dictionary<string, Entity> Entities = new();
         public static EntityManager Instance;
+        public static Entity LocalPlayer;
 
         private void Awake()
         {
