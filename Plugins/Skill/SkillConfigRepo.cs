@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace OpenFish.Plugins.Skill
@@ -15,6 +17,7 @@ namespace OpenFish.Plugins.Skill
 
         private void OnEnable()
         {
+#if UNITY_EDITOR
             Skills = new();
             SkillsByCategory = new();
             foreach (var guid in AssetDatabase.FindAssets("t:SkillConfig"))
@@ -32,6 +35,7 @@ namespace OpenFish.Plugins.Skill
                 SkillsByCategory[asset.Category].Add(asset);
             }
             Debug.Log("Found " + Skills.Count + " Config(s) for Skills");
+#endif
         }
     }
 }

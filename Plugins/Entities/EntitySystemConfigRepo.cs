@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace OpenFish.Plugins.Entities
@@ -15,6 +17,7 @@ namespace OpenFish.Plugins.Entities
 
         private void OnEnable()
         {
+#if UNITY_EDITOR
             IdConfigs = new Dictionary<string, T>();
             TypeConfigs = new Dictionary<string, T>();
             var configName = typeof(T).Name;
@@ -34,6 +37,7 @@ namespace OpenFish.Plugins.Entities
             }
             Debug.Log("Found " + TypeConfigs.Count + " TypeConfig(s) for " + configName);
             Debug.Log("Found " + IdConfigs.Count + " IdConfig(s) for " + configName);
+#endif
         }
         
     }

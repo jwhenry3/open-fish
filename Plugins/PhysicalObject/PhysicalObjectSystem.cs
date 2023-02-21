@@ -71,6 +71,9 @@ namespace OpenFish.Plugins.PhysicalObject
             Object = instance.transform;
             Object.parent = t.parent;
             Object.position = useSpawnPosition ? position : Entity.OriginalPosition;
+            var physicalObject = instance.GetComponent<PhysicalObject>();
+            if (physicalObject != null)
+                physicalObject.EntityId = Entity.EntityId;
             instance.gameObject.name = Entity.EntityId + ":physical-object:instance";
             Spawn(instance, Owner);
             ObjectInstantiated?.Invoke();
