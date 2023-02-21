@@ -17,6 +17,7 @@ namespace OpenFish.Plugins.Entities
 
         public bool MoveOutOfTheWay = true;
         [SyncVar] public string EntityId;
+        [SyncVar] public string Name;
         public string EntityType;
 
         public Vector3 OriginalPosition;
@@ -35,6 +36,7 @@ namespace OpenFish.Plugins.Entities
                 foreach (var system in EntityConfigRepo.TypeConfigs[EntityType].RequiredSystems)
                     if (!systems.Contains(system))
                         systems.Add(system);
+                Name = EntityConfigRepo.TypeConfigs[EntityType].Name;
             }
 
             if (EntityConfigRepo.IdConfigs.ContainsKey(EntityId))
@@ -42,6 +44,7 @@ namespace OpenFish.Plugins.Entities
                 foreach (var system in EntityConfigRepo.IdConfigs[EntityId].RequiredSystems)
                     if (!systems.Contains(system))
                         systems.Add(system);
+                Name = EntityConfigRepo.IdConfigs[EntityId].Name;
             }
 
             _requiredSystems = systems;

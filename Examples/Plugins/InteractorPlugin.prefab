@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8762120651143202808
+--- !u!1 &4080425116190988497
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,58 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8762120651143202789}
-  - component: {fileID: 8762120651143202810}
-  - component: {fileID: 8762120651143202811}
-  - component: {fileID: 1755753907568295869}
+  - component: {fileID: 4080425116190988509}
+  - component: {fileID: 4080425116190988498}
+  - component: {fileID: 4080425116190988499}
+  - component: {fileID: 4080425116190988496}
   m_Layer: 0
-  m_Name: PlayerControlPlugin
+  m_Name: InteractorPlugin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8762120651143202789
+--- !u!4 &4080425116190988509
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8762120651143202808}
+  m_GameObject: {fileID: 4080425116190988497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 332.35428, y: -70.93867, z: 172.94417}
+  m_LocalPosition: {x: 2.1498563, y: 1.9559946, z: -0.23021297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8762120651143202810
+--- !u!114 &4080425116190988498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8762120651143202808}
+  m_GameObject: {fileID: 4080425116190988497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da8792fe6c1426089b4c6cc45565a57, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a6c811d140a43e8a214573005ffdda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 8762120651143202811}
-  _networkObjectCache: {fileID: 8762120651143202811}
---- !u!114 &8762120651143202811
+  _addedNetworkObject: {fileID: 4080425116190988499}
+  _networkObjectCache: {fileID: 4080425116190988499}
+  Name: interactor
+  Description: 
+  Dependencies:
+  - entity
+--- !u!114 &4080425116190988499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8762120651143202808}
+  m_GameObject: {fileID: 4080425116190988497}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
@@ -65,41 +69,37 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
-  - {fileID: 8762120651143202810}
-  - {fileID: 1755753907568295869}
+  - {fileID: 4080425116190988498}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
-  _isGlobal: 1
+  _isGlobal: 0
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 17
+  <PrefabId>k__BackingField: 0
   <SpawnableCollectionId>k__BackingField: 0
-  _scenePathHash: 0
+  _scenePathHash: 18023929
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 13688243548645668339
+  <AssetPathHash>k__BackingField: 6626525885640117195
   _sceneNetworkObjects:
+  - {fileID: 4080425116190988499}
   - {fileID: 0}
-  - {fileID: 8762120651143202811}
---- !u!114 &1755753907568295869
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &4080425116190988496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8762120651143202808}
-  m_Enabled: 0
+  m_GameObject: {fileID: 4080425116190988497}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a6c811d140a43e8a214573005ffdda0, type: 3}
+  m_Script: {fileID: 11500000, guid: 09cb18d74dcf4021aada4f23a8554c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 8762120651143202811}
-  _networkObjectCache: {fileID: 8762120651143202811}
-  Name: player-control
-  Description: Control for Players
-  Dependencies:
-  - physical-object
-  - entity
-  - interactor
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 4080425116190988499}
+  _networkObjectCache: {fileID: 0}

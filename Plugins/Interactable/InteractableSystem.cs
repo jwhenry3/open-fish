@@ -6,9 +6,11 @@ namespace OpenFish.Plugins.Interactable
 {
     public class InteractableSystem : EntitySystem
     {
+        public override string GetSystemName() => "interactable";
         public static readonly List<InteractableSystem> Interactables = new();
         public static List<InteractableSystem> Sorted = new();
-        public bool CanInteract;
+        public float InteractDuration = 1;
+        public bool CanInteract = true;
         public Transform Canvas;
         public GameObject VisibleObject;
         public GameObject InteractObject;

@@ -1,4 +1,6 @@
+using System;
 using OpenFish.Plugins.Entities;
+using OpenFish.Plugins.Interactable;
 using TriInspector;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -35,6 +37,9 @@ namespace OpenFish.Plugins.PlayerControl
         [HideInInspector]
         public Transform PhysicalObject;
         private PhysicalObject.PhysicalObject _container;
+        private InteractorSystem interactor;
+
+        public bool HasControl = true;
 
         [Group("manual")]
         public float speed = 30;
@@ -48,10 +53,12 @@ namespace OpenFish.Plugins.PlayerControl
         private float _pitch;
         private float _yaw;
 
+        public string InteractAction = "Interact";
 
         // Start is called before the first frame update
         private void Awake()
         {
+            interactor = GetComponent<InteractorSystem>();
             MoveInput.Horizontal = "Horizontal";
             MoveInput.Vertical = "Vertical";
             CameraInput.Horizontal = "Look X";
@@ -84,17 +91,22 @@ namespace OpenFish.Plugins.PlayerControl
         private void Update()
         {
             if (Camera == null) return;
+            if (!HasControl) return;
 
             MoveInput.Update();
             CameraInput.Update();
             if (_rigidbody == null) return;
             UpdateMovement();
+            if (interactor != null && Input.GetButtonDown(InteractAction))
+                interactor.Interact();
         }
+
 
         private float attackCount;
 
         private void LateUpdate()
         {
+            if (!HasControl) return;
             if (Camera == null) return;
             UpdateCamera();
         }

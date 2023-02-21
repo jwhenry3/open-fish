@@ -1174,7 +1174,6 @@ MonoBehaviour:
   <AssetPathHash>k__BackingField: 148801286180197802
   _sceneNetworkObjects:
   - {fileID: 306400667}
-  - {fileID: 0}
   - {fileID: 1000372459}
   - {fileID: 1367428558}
   - {fileID: 1621392007}
@@ -1194,7 +1193,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1000372459}
   _networkObjectCache: {fileID: 1000372459}
   Entity: {fileID: 1000372464}
-  CanInteract: 0
+  InteractDuration: 1
+  CanInteract: 1
   Canvas: {fileID: 1222106066}
   VisibleObject: {fileID: 1167197329}
   InteractObject: {fileID: 906226414}
@@ -1263,7 +1263,8 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 1000372459}
   Ready: 0
   MoveOutOfTheWay: 0
-  EntityId: touch_1
+  EntityId: touch_2
+  Name: Column
   EntityType: 
   OriginalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1167197329
@@ -1540,7 +1541,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1367428558}
   _networkObjectCache: {fileID: 1367428558}
   Entity: {fileID: 1367428559}
-  CanInteract: 0
+  InteractDuration: 1
+  CanInteract: 1
   Canvas: {fileID: 1847549762}
   VisibleObject: {fileID: 1735741495}
   InteractObject: {fileID: 1432440017}
@@ -1581,7 +1583,6 @@ MonoBehaviour:
   <AssetPathHash>k__BackingField: 148801286180197802
   _sceneNetworkObjects:
   - {fileID: 306400667}
-  - {fileID: 0}
   - {fileID: 1000372459}
   - {fileID: 1367428558}
   - {fileID: 1621392007}
@@ -1603,6 +1604,7 @@ MonoBehaviour:
   Ready: 0
   MoveOutOfTheWay: 0
   EntityId: touch_1
+  Name: Ball
   EntityType: 
   OriginalPosition: {x: 0, y: 0, z: 0}
 --- !u!21 &1395248809
@@ -1901,7 +1903,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1621392007}
   _networkObjectCache: {fileID: 1621392007}
   Entity: {fileID: 1621392008}
-  CanInteract: 0
+  InteractDuration: 1
+  CanInteract: 1
   Canvas: {fileID: 1974523536}
   VisibleObject: {fileID: 855107581}
   InteractObject: {fileID: 1785930293}
@@ -1942,7 +1945,6 @@ MonoBehaviour:
   <AssetPathHash>k__BackingField: 148801286180197802
   _sceneNetworkObjects:
   - {fileID: 306400667}
-  - {fileID: 0}
   - {fileID: 1000372459}
   - {fileID: 1367428558}
   - {fileID: 1621392007}
@@ -1963,7 +1965,8 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 1621392007}
   Ready: 0
   MoveOutOfTheWay: 0
-  EntityId: touch_1
+  EntityId: touch_3
+  Name: Box
   EntityType: 
   OriginalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1621392009
@@ -2611,20 +2614,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7064679703265567090, guid: 244eb5c59647bf7449d8c54b4fba8dce, type: 3}
       propertyPath: _sceneNetworkObjects.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7064679703265567090, guid: 244eb5c59647bf7449d8c54b4fba8dce, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 1367428558}
+      objectReference: {fileID: 306400667}
     - target: {fileID: 7064679703265567090, guid: 244eb5c59647bf7449d8c54b4fba8dce, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 306400667}
+      objectReference: {fileID: 1000372459}
     - target: {fileID: 7064679703265567090, guid: 244eb5c59647bf7449d8c54b4fba8dce, type: 3}
       propertyPath: _sceneNetworkObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1367428558}
+    - target: {fileID: 7064679703265567090, guid: 244eb5c59647bf7449d8c54b4fba8dce, type: 3}
+      propertyPath: _sceneNetworkObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 1621392007}
     - target: {fileID: 7064679703265567092, guid: 244eb5c59647bf7449d8c54b4fba8dce, type: 3}
       propertyPath: m_RootOrder
       value: 3

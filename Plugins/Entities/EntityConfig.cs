@@ -9,5 +9,6 @@ namespace OpenFish.Plugins.Entities
     public class EntityConfig : EntitySystemConfig
     {
         public List<string> RequiredSystems;
+        public string Name;
     }
 }
