@@ -1,5 +1,6 @@
 ﻿using FishNet.Object;
 using OpenFish.Plugins.Entities;
+using UnityEngine;
 
 namespace OpenFish.Plugins.Inventory
 {
@@ -9,20 +10,8 @@ namespace OpenFish.Plugins.Inventory
         public Bag Bag;
         public BagUI BagUIPrefab;
         private BagUI BagUI;
-
-        [ServerRpc]
-        public void TakeItemFromChest(Chest chest, int position)
-        {
-            var entityId = Entity.EntityId;
-            chest.TakeItem(position, entityId);
-        }
-        
-        [ServerRpc]
-        public void PutItemInChest(Chest chest, int position)
-        {
-            var entityId = Entity.EntityId;
-            chest.PutItem(position, entityId);
-        }
+        public string MenuHotkey = "Inventory";
+        public string CloseHotkey = "Cancel";
 
         public override void OnStartClient()
         {
@@ -34,12 +23,59 @@ namespace OpenFish.Plugins.Inventory
            BagUI.Initialize(Entity.EntityId);
         }
 
+        protected override void Update()
+        {
+            base.Update();
+            if (BagUI == null) return;
+            if (Input.GetButtonDown(MenuHotkey))
+            {
+                BagUI.gameObject.SetActive(!BagUI.gameObject.activeInHierarchy);
+            }
+
+            if (Input.GetButtonDown(CloseHotkey))
+            {
+                BagUI.gameObject.SetActive(false);
+            }
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
             if (BagUI == null) return;
             Destroy(BagUI.gameObject);
             BagUI = null;
+        }
+
+        public void TakeFromChest(Chest chest, int position)
+        {
+            var entity = chest.GetComponent<Entity>();
+            Server_TakeFromChest(entity.EntityId, position);
+        }
+
+        public void PutInChest(Chest chest, int position)
+        {
+            var entity = chest.GetComponent<Entity>();
+            Server_PutInChest(entity.EntityId, position);
+        }
+        
+        [ServerRpc]
+        private void Server_TakeFromChest(string chestEntityId, int position)
+        {
+            var bag = Bag.GetBag(chestEntityId);
+            if (bag == null) return;
+            var chest = bag as Chest;
+            if (chest == null) return;
+            chest.TakeItem(position, Entity.EntityId);
+        }
+
+        [ServerRpc]
+        private void Server_PutInChest(string chestEntityId, int position)
+        {
+            var bag = Bag.GetBag(chestEntityId);
+            if (bag == null) return;
+            var chest = bag as Chest;
+            if (chest == null) return;
+            chest.PutItem(position, Entity.EntityId);
         }
     }
 }

@@ -111,7 +111,7 @@ namespace OpenFish.Plugins.Interactable
         {
             if (!IsServer) return;
             Interacted?.Invoke(CurrentInteraction);
-            CurrentInteraction.OnInteracted.Invoke(Entity.EntityId, IsServer);
+            CurrentInteraction.OnInteracted.Invoke(Entity.EntityId, true);
             Client_Completed(CurrentInteraction.Entity.EntityId);
             Stop();
             if (DisplayLogs)
@@ -122,6 +122,9 @@ namespace OpenFish.Plugins.Interactable
         private void Client_Completed(string interactableEntityId)
         {
             if (!IsOwner) return;
+            var interactableEntity = EntityManager.GetEntity(interactableEntityId);
+            var interactable = interactableEntity.GetSystem<InteractableSystem>();
+            interactable.OnInteracted.Invoke(Entity.EntityId, false);
         }
 
         [ObserversRpc]

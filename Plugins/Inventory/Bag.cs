@@ -16,11 +16,10 @@ namespace OpenFish.Plugins.Inventory
 
         public List<ItemAmount> StartingItems;
 
-        public static Bag GetPlayerBag(string playerEntityId)
+        public static Bag GetBag(string entityId)
         {
-            var entity = EntityManager.GetEntity(playerEntityId);
+            var entity = EntityManager.GetEntity(entityId);
             if (entity == null) return null;
-            if (entity.EntityType != "player") return null;
             var inventory = entity.GetSystem<InventorySystem>();
             if (inventory == null) return null;
             return inventory.Bag;

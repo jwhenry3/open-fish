@@ -9,8 +9,6 @@ namespace OpenFish.Plugins.Entities
     public class EntitySystemManager<T> : NetworkBehaviour where T : EntitySystem
     {
         private Plugin plugin;
-        protected T System;
-        protected readonly Dictionary<string, GameObject> EntitySystems = new();
 
         protected virtual void Awake()
         {
@@ -48,18 +46,7 @@ namespace OpenFish.Plugins.Entities
             if (!plugin.enabled) return;
             if (!IsServer || !asServer) return;
             if (entity.GetComponent<T>() != null)
-                System = entity.AddExistingSystem<T>(entity.gameObject);
-            if (System != null)
-                EntitySystems[entity.EntityId] = System.gameObject;
-        }
-
-        public virtual List<NetworkObject> GetMovableNetworkObjects()
-        {
-            if (!plugin.enabled) return new();
-            var list = new List<NetworkObject>();
-            foreach (var nob in System.GetMovableNetworkObjects())
-                list.Add(nob);
-            return list;
+                entity.AddExistingSystem<T>(entity.gameObject);
         }
     }
 }
