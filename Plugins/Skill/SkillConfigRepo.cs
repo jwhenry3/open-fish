@@ -29,10 +29,14 @@ namespace OpenFish.Plugins.Skill
                     continue;
                 var asset = AssetDatabase.LoadAssetAtPath(path, typeof(SkillConfig)) as SkillConfig;
                 if (asset == null) continue;
-                if (!SkillsByCategory.ContainsKey(asset.Category))
-                    SkillsByCategory[asset.Category] = new();
+                if (asset.Category != null)
+                {
+                    if (!SkillsByCategory.ContainsKey(asset.Category))
+                        SkillsByCategory[asset.Category] = new();
+                    SkillsByCategory[asset.Category].Add(asset);
+                }
+
                 Skills.Add(asset.Id, asset);
-                SkillsByCategory[asset.Category].Add(asset);
             }
             Debug.Log("Found " + Skills.Count + " Config(s) for Skills");
 #endif

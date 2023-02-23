@@ -109,6 +109,8 @@ MonoBehaviour:
   - {fileID: 1001236389508700789}
   - {fileID: 8253766241701852683}
   - {fileID: 2125582151994059392}
+  - {fileID: 4887583906178942983}
+  - {fileID: 5243179902305395812}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -319,9 +321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d06a7bac724d868d5c35961e9fcae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 10
   _addedNetworkObject: {fileID: 42602576657857775}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 42602576657857775}
   Entity: {fileID: 42602576657857768}
   Bag: {fileID: 5243179902305395812}
 --- !u!114 &5243179902305395812
@@ -336,7 +338,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c96d08ed6b47b881386f362b0a2c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 42602576657857775}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 42602576657857775}
   Capacity: 30
+  StartingItems:
+  - Position: 0
+    ItemId: carrot
+    Amount: 3

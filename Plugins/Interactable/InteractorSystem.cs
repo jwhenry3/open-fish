@@ -2,6 +2,7 @@
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using OpenFish.Plugins.Entities;
+using OpenFish.Plugins.PhysicalObject;
 using UnityEngine;
 
 namespace OpenFish.Plugins.Interactable
@@ -20,6 +21,9 @@ namespace OpenFish.Plugins.Interactable
         [SyncVar] public bool IsInteracting;
         private Vector3 lastLocation;
 
+        public bool DisplayLogs;
+
+
         private void Awake()
         {
             _transform = transform;
@@ -32,14 +36,15 @@ namespace OpenFish.Plugins.Interactable
             if (CurrentInteraction && IsInteracting)
             {
                 // Interrupt the action if the player moves
-                if (_transform.position != lastLocation)
+                var obj = Entity.GetSystem<PhysicalObjectSystem>().Object;
+                if (obj.position != lastLocation)
                 {
                     Interrupt();
                 }
                 else
                 {
                     interactCurrentDuration += Time.deltaTime;
-                    if (interactCurrentDuration >= CurrentInteraction.InteractDuration)
+                    if (interactCurrentDuration >= CurrentInteraction.InteractDuration || interactCurrentDuration == 0)
                         Complete();
                 }
             }
@@ -59,26 +64,29 @@ namespace OpenFish.Plugins.Interactable
             if (!CanInteractWithWorld) return;
             var interactable = InteractableSystem.Sorted.Count > 0 ? InteractableSystem.Sorted[0] : null;
             if (interactable == null || !interactable.CanInteract) return;
-            var entity = interactable.GetComponent<Entity>();
+            var entity = interactable.Entity;
             if (entity == null) return;
             Server_Interact_With(entity.EntityId);
-            Debug.Log("Interacting with " + entity.Name + "(" + entity.EntityId + ")");
         }
-
+        
         [ServerRpc]
         private void Server_Interact_With(string entityId)
         {
             var entity = EntityManager.GetEntity(entityId);
             if (entity == null) return;
-            var interactable = entity.GetComponent<InteractableSystem>();
+            var interactable = entity.GetSystem<InteractableSystem>();
             if (interactable == null) return;
+            var obj = Entity.GetSystem<PhysicalObjectSystem>().Object;
+            var collider = obj.GetComponent<CapsuleCollider>();
             if (Vector3.Distance(
-                    _transform.position,
+                    obj.position,
                     interactable._transform.position
-                ) > interactable.InteractableRadius) return;
+                ) > interactable.InteractableRadius + collider.radius) return;
             CurrentInteraction = interactable;
             IsInteracting = true;
-            lastLocation = _transform.position;
+            lastLocation = obj.position;
+            if (DisplayLogs)
+                Debug.Log("Interacting...");
         }
 
         public void Interrupt()
@@ -87,6 +95,8 @@ namespace OpenFish.Plugins.Interactable
             Interrupted?.Invoke();
             Stop();
             Client_Interrupted();
+            if (DisplayLogs)
+                Debug.Log("Interaction Interrupted!");
         }
 
         private void Stop()
@@ -101,17 +111,17 @@ namespace OpenFish.Plugins.Interactable
         {
             if (!IsServer) return;
             Interacted?.Invoke(CurrentInteraction);
+            CurrentInteraction.OnInteracted.Invoke(Entity.EntityId, IsServer);
+            Client_Completed(CurrentInteraction.Entity.EntityId);
             Stop();
-            Client_Completed();
+            if (DisplayLogs)
+                Debug.Log("Interaction Complete!");
         }
 
         [ObserversRpc]
-        private void Client_Completed()
+        private void Client_Completed(string interactableEntityId)
         {
             if (!IsOwner) return;
-            Interacted?.Invoke(CurrentInteraction);
-            CurrentInteraction = null;
-            Debug.Log("Interaction Complete!");
         }
 
         [ObserversRpc]
@@ -119,8 +129,6 @@ namespace OpenFish.Plugins.Interactable
         {
             if (!IsOwner) return;
             Interrupted?.Invoke();
-            CurrentInteraction = null;
-            Debug.Log("Interaction Interrupted!");
         }
     }
 }

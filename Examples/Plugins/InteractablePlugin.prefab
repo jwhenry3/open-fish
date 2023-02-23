@@ -53,6 +53,7 @@ MonoBehaviour:
   Description: 
   Dependencies:
   - entity
+  - physical-object
 --- !u!114 &1647288022179870322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 10
+  <PrefabId>k__BackingField: 2
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
@@ -103,4 +104,3 @@ MonoBehaviour:
   _componentIndexCache: 1
   _addedNetworkObject: {fileID: 1647288022179870322}
   _networkObjectCache: {fileID: 1647288022179870322}
-  Prefab: {fileID: 3305037502598741916, guid: 8c236bbb7c3e3f84cbe23b394d6a3c5f, type: 3}

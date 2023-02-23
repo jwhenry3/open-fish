@@ -1,5 +1,8 @@
-﻿namespace OpenFish.Plugins.Inventory
+﻿using System;
+
+namespace OpenFish.Plugins.Inventory
 {
+    [Serializable]
     public class ItemAmount
     {
         public int Position;

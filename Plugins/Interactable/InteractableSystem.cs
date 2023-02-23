@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using OpenFish.Plugins.Entities;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace OpenFish.Plugins.Interactable
 {
     public class InteractableSystem : EntitySystem
     {
+        public UnityEvent<string, bool> OnInteracted;
         public override string GetSystemName() => "interactable";
         public static readonly List<InteractableSystem> Interactables = new();
         public static List<InteractableSystem> Sorted = new();
@@ -27,6 +29,7 @@ namespace OpenFish.Plugins.Interactable
 
         private void Awake()
         {
+            OnInteracted = OnInteracted ?? new UnityEvent<string, bool>();
             _transform = transform;
             if (!VisibleCollider)
                 VisibleCollider = gameObject.AddComponent<SphereCollider>();

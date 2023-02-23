@@ -12,6 +12,8 @@ namespace OpenFish.Plugins.Inventory
         [SyncObject]
         public readonly SyncDictionary<int, ItemAmount> Items = new();
 
+        public List<ItemAmount> StartingItems;
+
         public static Bag GetPlayerBag(string playerEntityId)
         {
             var entity = EntityManager.GetEntity(playerEntityId);
@@ -21,7 +23,15 @@ namespace OpenFish.Plugins.Inventory
             if (inventory == null) return null;
             return inventory.Bag;
         }
-        
+
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
+            if (StartingItems is not { Count: > 0 }) return;
+            foreach (var item in StartingItems)
+                Add(item.ItemId, item.Amount);
+        }
+
         [ServerRpc]
         public void Client_Split(int position, int amount)
         {
