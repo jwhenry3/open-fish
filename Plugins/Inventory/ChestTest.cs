@@ -12,7 +12,11 @@ namespace OpenFish.Plugins.Inventory
             if (!asServer) return;
             var bag = Bag.GetPlayerBag(playerEntityId);
             if (bag == null) return;
-            bag.Add("carrot", 1);
+            if (!bag.Add("carrot", 1))
+            {
+                Debug.Log("No Room");
+                return;
+            }
             var item = bag.GetItem(0);
             if (item == null) return;
             Debug.Log("Player now has " + item.Amount + " Carrots!");

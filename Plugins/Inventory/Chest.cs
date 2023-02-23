@@ -15,8 +15,8 @@ namespace OpenFish.Plugins.Inventory
             var bag = GetPlayerBag(playerEntityId);
             if (bag == null) return;
             // actually perform the transaction
-            bag.Add(item.ItemId, item.Amount);
-            Remove(item.Position);
+            if (bag.Add(item.ItemId, item.Amount))
+                Remove(item.Position);
         }
 
         public void PutItem(int position, string playerEntityId)
@@ -28,8 +28,8 @@ namespace OpenFish.Plugins.Inventory
             var item = bag.GetItem(position);
             if (item == null) return;
             // actually perform the transaction
-            Add(item.ItemId, item.Amount);
-            bag.Remove(item.Position);
+            if (Add(item.ItemId, item.Amount))
+                bag.Remove(item.Position);
         }
     }
 }

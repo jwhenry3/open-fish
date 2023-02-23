@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
@@ -8,6 +9,7 @@ namespace OpenFish.Plugins.Inventory
 {
     public class Bag : NetworkBehaviour
     {
+        public event Action<int> ItemUpdated;
         public int Capacity = 30;
         [SyncObject]
         public readonly SyncDictionary<int, ItemAmount> Items = new();
@@ -32,6 +34,23 @@ namespace OpenFish.Plugins.Inventory
                 Add(item.ItemId, item.Amount);
         }
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            Items.OnChange += OnItemChange;
+        }
+
+        private void OnDestroy()
+        {
+            if (!IsClient) return;
+            Items.OnChange -= OnItemChange;
+        }
+
+        private void OnItemChange(SyncDictionaryOperation op, int key, ItemAmount item, bool asServer)
+        {
+            ItemUpdated?.Invoke(key);
+        }
+
         [ServerRpc]
         public void Client_Split(int position, int amount)
         {
@@ -45,9 +64,9 @@ namespace OpenFish.Plugins.Inventory
         }
         
         
-        public void Add(string itemId, int amount)
+        public bool Add(string itemId, int amount)
         {
-            if (!IsServer) return;
+            if (!IsServer) return false;
             var existing = FirstItemByItemId(itemId);
             if (existing != null)
             {
@@ -57,17 +76,18 @@ namespace OpenFish.Plugins.Inventory
                     ItemId = itemId,
                     Amount = existing.Amount + amount
                 };
-                return;
+                return true;
             }
 
             var empty = FirstEmptyPosition();
-            if (empty == -1) return;
+            if (empty == -1) return false;
             Items[empty] = new ItemAmount()
             {
                 Position = empty,
                 ItemId = itemId,
                 Amount = amount
             };
+            return true;
         }
 
         public void Split(int position, int amount)

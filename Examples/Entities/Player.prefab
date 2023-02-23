@@ -309,6 +309,7 @@ MonoBehaviour:
   interactCooldown: 0
   interactCurrentDuration: 0
   IsInteracting: 0
+  DisplayLogs: 0
 --- !u!114 &4887583906178942983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +327,8 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 42602576657857775}
   Entity: {fileID: 42602576657857768}
   Bag: {fileID: 5243179902305395812}
+  BagUIPrefab: {fileID: 5999324482448872570, guid: 5a6b4fa7378fbda4bb0e17162795f6b8, type: 3}
+  BagUI: {fileID: 0}
 --- !u!114 &5243179902305395812
 MonoBehaviour:
   m_ObjectHideFlags: 0
