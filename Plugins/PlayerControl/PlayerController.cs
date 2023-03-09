@@ -49,6 +49,7 @@ namespace OpenFish.Plugins.PlayerControl
 
         private readonly DirectionalInput MoveInput = new();
         private readonly DirectionalInput CameraInput = new();
+        private readonly DirectionalInput MouseCameraInput = new();
 
         private float _pitch;
         private float _yaw;
@@ -63,6 +64,10 @@ namespace OpenFish.Plugins.PlayerControl
             MoveInput.Vertical = "Vertical";
             CameraInput.Horizontal = "Look X";
             CameraInput.Vertical = "Look Y";
+            MouseCameraInput.Horizontal = "Mouse X";
+            MouseCameraInput.Vertical = "Mouse Y";
+            MouseCameraInput.Modifier = "MouseLook";
+            MouseCameraInput.Speed = 2;
         }
 
         public void Initialize()
@@ -95,6 +100,7 @@ namespace OpenFish.Plugins.PlayerControl
 
             MoveInput.Update();
             CameraInput.Update();
+            MouseCameraInput.Update();
             if (_rigidbody == null) return;
             UpdateMovement();
             if (interactor != null && Input.GetButtonDown(InteractAction))
@@ -133,10 +139,12 @@ namespace OpenFish.Plugins.PlayerControl
                 }
             }
 
-            var cameraVector = CameraInput.DirectionVector;
-
-            _yaw += cameraVector.x * cameraSpeed * Time.deltaTime;
-            _pitch -= cameraVector.y * cameraSpeed * Time.deltaTime;
+            var input = CameraInput;
+            if (MouseCameraInput.DirectionVector != Vector2.zero)
+                input = MouseCameraInput;
+            var cameraVector = input.DirectionVector;
+            _yaw += cameraVector.x * cameraSpeed  * input.Speed * Time.deltaTime;
+            _pitch -= cameraVector.y * cameraSpeed * input.Speed * Time.deltaTime;
             _pitch = Mathf.Clamp(_pitch, 0, 60);
             if (_yaw < -180)
                 _yaw += 360;

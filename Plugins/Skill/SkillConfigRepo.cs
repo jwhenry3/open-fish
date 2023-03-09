@@ -15,7 +15,7 @@ namespace OpenFish.Plugins.Skill
         public Dictionary<string, SkillConfig> Skills;
         public Dictionary<string, List<SkillConfig>> SkillsByCategory;
 
-        private void OnEnable()
+        public void OnStart()
         {
 #if UNITY_EDITOR
             Skills = new();

@@ -13,7 +13,7 @@ namespace OpenFish.Plugins.Inventory
         public bool UseExamples;
         public Dictionary<string, Item> Items;
         
-        private void OnEnable()
+        public void OnStart()
         {
 #if UNITY_EDITOR
             Items = new();

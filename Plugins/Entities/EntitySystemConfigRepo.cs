@@ -15,7 +15,7 @@ namespace OpenFish.Plugins.Entities
         public static Dictionary<string, T> IdConfigs;
         public static Dictionary<string, T> TypeConfigs;
 
-        private void OnEnable()
+        public void OnStart()
         {
 #if UNITY_EDITOR
             IdConfigs = new Dictionary<string, T>();

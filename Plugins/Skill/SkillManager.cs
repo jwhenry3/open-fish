@@ -14,6 +14,7 @@ namespace OpenFish.Plugins.Skill
         {
             base.Awake();
             Instance = this;
+            Repo.OnStart();
             Instantiated?.Invoke(this);
         }
     }

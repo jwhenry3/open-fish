@@ -19,6 +19,7 @@ namespace OpenFish.Plugins.Entities
         private void Awake()
         {
             Instance = this;
+            EntityConfigRepo.OnStart();
         }
 
         private void OnDestroy()
